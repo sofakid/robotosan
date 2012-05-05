@@ -1,0 +1,23 @@
+#!/usr/bin/tclsh
+
+set lStuff {
+ooo	むもみむ
+oox	もみもみ
+oxo	まむーむ
+oxx	ざまもむ
+xoo	さーむまむみ
+xox	ざもみまむま
+xxo	ざみむむ
+xxx	ざももまーま
+}
+
+set iRounds 5
+
+proc go {lStuff} {
+
+
+	foreach {key value} $lStuff {
+		
+
+
+}
