@@ -1,0 +1,96 @@
+# -----------------------
+# exapandable primatives
+# -----------------------
+namespace eval prim {
+
+variable lSubjects
+
+variable tags {
+
+  <n>  selectNoun
+  <pn> selectPronoun
+
+}
+
+variable subjectProtos {
+
+  {<pn>}    {<pn>}          {pronoun person}
+  {<n>}     {<n>}           {noun person place thing}
+  {この<n>}        {this <n>}      {close person thing}
+  {その<n>}        {that <n>}      {close person thing}
+  {あその<n>}        {that <n> over there}   {noun far person thing}
+
+}
+
+proc tagPn {fmt word} {
+   return [tag $fmt "<pn>" $word]
+}
+
+proc tagN {fmt word} {
+   return [tag $fmt "<n>" $word]
+}
+
+proc tag {fmt tag word} {
+   set x [string first $tag $fmt]
+   return [string replace $fmt $x [expr $x + [string length $tag] -1] $word]
+}
+
+proc scanLine {sJa sEn lTags} { 
+   set sNextBeg -1
+   while {[set sNextBeg [string first "<" $sJa [expr $sNextBeg + 1]]] != -1} {
+      set sNextEnd [string first ">" $sJa $sNextBeg]
+      set sTag [string range $sJa $sNextBeg $sNextEnd]
+      
+      switch $sTag {
+         "<pn>" {
+            foreach {pnEng pnKanji pnKana pnKeywords} $::lPronouns {
+               set lSubject [list [tagPn $sEn $pnEng] [tagPn $sJa $pnKanji] [tagPn $sJa $pnKana]]
+               lappend ::prim::lSubjects $lSubject
+            }
+         }
+         
+         "<n>" {
+            foreach {pnEng pnKanji pnKana} $::lNounPlaces {
+               set lSubject [list [tagN $sEn $pnEng] [tagN $sJa $pnKanji] [tagN $sJa $pnKana]]
+               lappend ::prim::lSubjects $lSubject
+            }         
+            foreach {pnEng pnKanji pnKana} $::lNounThings {
+               set lSubject [list [tagN $sEn $pnEng] [tagN $sJa $pnKanji] [tagN $sJa $pnKana]]
+               lappend ::prim::lSubjects $lSubject
+            }         
+         }
+      }
+   }   
+}
+
+proc selectNoun {} {
+
+}
+
+proc selectPronoun {} {
+  
+}
+
+proc genSubjects {} {
+
+  foreach {sJa sEn lTags} $::prim::subjectProtos {
+  
+      scanLine $sJa $sEn $lTags
+        
+  }
+
+}
+
+
+}; # end namespace
+
+
+proc buildPrimatives {} {
+   
+    ::prim::genSubjects
+    
+    puts $::prim::lSubjects
+    
+}
+
+lappend lessonBuilders buildPrimatives

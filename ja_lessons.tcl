@@ -23,6 +23,8 @@ foreach sFile {
   ja_adjectives.tcl
   ja_misc.tcl
 
+  ja_prim.tcl
+  
 } { utfSource $sFile }
 
 puts "Building lessons..."

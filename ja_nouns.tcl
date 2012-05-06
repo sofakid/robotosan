@@ -5,6 +5,13 @@
 # ------
 # Places
 # ------
+set lPronouns {
+   {I} {私} {わたし} {self}
+   {you} {あなた} {あなた} {you}
+   {we} {私たち} {わたしたち} {you}
+   {him} {かれ} {かれ} {}
+   {her} {かのじょ} {かのじょ} {}
+}
 
 set lNounPlaces {
 
@@ -24,7 +31,7 @@ set lNounPlaces {
     {elevator} {エレベーター} {エレベーター}
     {escalator} {エスカレーター} {エスカレーター}
     {company} {会社} {かいしゃ}
-    {house} {うち} {うち}
+    {house} {内} {うち}
     {department} {売り場} {うりば}
     {basement} {地下} {ちか}
     {dorm #check} {りょう} {りょう}
@@ -116,7 +123,7 @@ set lNounThings {
     {escalator} {エスカレーター} {エスカレーター}
     {country} {お国} {おくに}
     {company} {会社} {かいしゃ}
-    {house} {うち} {うち}
+    {house} {内} {うち}
     {telephone} {電話} {でんわ}
     {shoes} {靴} {くつ}
     {necktie} {ネクタイ} {ネクタイ}
