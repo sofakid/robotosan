@@ -19,6 +19,8 @@ variable subjectProtos {
   {この<n>}        {this <n>}      {close person thing}
   {その<n>}        {that <n>}      {close person thing}
   {あその<n>}        {that <n> over there}   {noun far person thing}
+  {あなたの<n>}        {your <n>}   {noun thing}
+  {私の<n>}        {my <n>}   {noun thing}
 
 }
 
@@ -50,14 +52,19 @@ proc scanLine {sJa sEn lTags} {
          }
          
          "<n>" {
-            foreach {pnEng pnKanji pnKana} $::lNounPlaces {
-               set lSubject [list [tagN $sEn $pnEng] [tagN $sJa $pnKanji] [tagN $sJa $pnKana]]
-               lappend ::prim::lSubjects $lSubject
-            }         
-            foreach {pnEng pnKanji pnKana} $::lNounThings {
-               set lSubject [list [tagN $sEn $pnEng] [tagN $sJa $pnKanji] [tagN $sJa $pnKana]]
-               lappend ::prim::lSubjects $lSubject
-            }         
+             if {[string first places $lTags] != -1} {
+                foreach {pnEng pnKanji pnKana} $::lNounPlaces {
+                   set lSubject [list [tagN $sEn $pnEng] [tagN $sJa $pnKanji] [tagN $sJa $pnKana]]
+                   lappend ::prim::lSubjects $lSubject
+                }         
+             }
+
+             if {[string first thing $lTags] != -1} {
+                foreach {pnEng pnKanji pnKana} $::lNounThings {
+                   set lSubject [list [tagN $sEn $pnEng] [tagN $sJa $pnKanji] [tagN $sJa $pnKana]]
+                   lappend ::prim::lSubjects $lSubject
+                }         
+             }
          }
       }
    }   
