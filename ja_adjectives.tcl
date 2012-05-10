@@ -1,12 +1,17 @@
-
 # ----------
 # Adjectives
 # ----------
 
+namespace eval adj {
+
+# 0 is Na
+# 1 is I
+variable lastSelect 0
+
 # -------------
 # い Adjectives
 # -------------
-set lIAdj {
+variable lIAdj {
   {large}           {大きい} {おおきい} {}
   {big}             {大きい} {おおきい} {}
   {small}           {小さい} {ちいさい} {}
@@ -42,7 +47,7 @@ set lIAdj {
 # -------------
 # な Adjectives
 # -------------
-set lNaAdj {
+variable lNaAdj {
   
   {handsome}                 {ハンサム} {ハンサム} {}
   {beautiful}                {きれい} {きれい} {}
@@ -52,7 +57,6 @@ set lNaAdj {
   {famous}                   {有名} {ゆうめい} {}
   {kind}                     {親切} {しんせつ} {}
   {healthy}                  {元気} {げんき} {}
-  {sound}                    {元気} {げんき} {argument}
   {cheerful}                 {元気} {げんき} {}
   {free}                     {暇} {ひま} {temporal}
   {convenient}               {分離} {ぶんり} {}
@@ -66,6 +70,33 @@ set lNaAdj {
 #
 #
 
+proc selectFromList {lAdj tags} {
+   set n [llength $lAdj]
+   set m [expr $n / 4]
+   
+   # make this way better
+   set i [expr (int((rand()*31*$m)) % $m) * 4]
+   
+   # todo tags
+   
+   return [lrange $lAdj $i [expr $i + 3]]
+   
+}
+
+proc selectNaAdj {tags} {
+   return [selectFromList $::adj::lNaAdj $tags]
+}
+
+proc selectIAdj {tags} {
+   return [selectFromList $::adj::lIAdj $tags]
+}
+
+proc selectAdj {tags} {
+  set ::adj::lastSelect [expr int(rand()*10) % 2]
+  #puts $::adj::lastSelect
+  return $::adj::lastSelect ? [selectIAdj $tags] : [selectNaAdj $tags]
+}
+
 # ---------------
 # Lesson Builders
 # ---------------
@@ -77,7 +108,7 @@ proc buildNaAdjVocab {} {
    
    set na "な"
    
-   foreach {english kanji kana tags} $::lNaAdj {
+   foreach {english kanji kana tags} $::adj::lNaAdj {
    
         # wtf?
         #set eng [expr (0 < [llength $tags]) ? {$english} : "$english ($tags)"]
@@ -101,7 +132,7 @@ proc buildIAdjVocab {} {
    
    set lLesson {}
    
-   foreach {english kanji kana tags} $::lIAdj {
+   foreach {english kanji kana tags} $::adj::lIAdj {
    
         # wtf?
         #set eng [expr (0 < [llength $tags]) ? {$english} : "$english ($tags)"]
@@ -125,7 +156,7 @@ proc buildAllAdjVocab {} {
 
     set na "な"
 
-    foreach "sNative sKanji sKana lTags" $::lIAdj {
+    foreach "sNative sKanji sKana lTags" $::adj::lIAdj {
 	
 	    lappend lWords $sNative
 	    
@@ -137,7 +168,7 @@ proc buildAllAdjVocab {} {
 		set aKana($sNative) $sKana;
 	}
 	
-	foreach "sNative sKanji sKana lTags" $::lNaAdj {
+	foreach "sNative sKanji sKana lTags" $::adj::lNaAdj {
 	
 	    lappend lWords $sNative
 	    
@@ -157,6 +188,7 @@ proc buildAllAdjVocab {} {
 	
 }
 
+}; # end namespace
 # TODO build adjective+noun lessons
 
-lappend lessonBuilders buildIAdjVocab buildNaAdjVocab buildAllAdjVocab
+lappend lessonBuilders ::adj::buildIAdjVocab ::adj::buildNaAdjVocab ::adj::buildAllAdjVocab

@@ -5,6 +5,8 @@
 # ------
 # Places
 # ------
+namespace eval nouns {
+
 set lPronouns {
    {I} {私} {わたし} {self}
    {you} {あなた} {あなた} {you}
@@ -59,9 +61,6 @@ set lNounPlaces {
 
    {town}         {町} {まち}
   {city}         {町} {まち}
-  {food}         {食べ物} {たべもの}
-  {vehicle}      {車} {くるま}
-  {car}          {車} {くるま}
   {place}        {所} {ところ}
 
 }; # end set lNounPlaces
@@ -236,7 +235,7 @@ proc buildNounVocab {} {
    set lWords {}
    set lLesson {}
    
-   foreach "sNative sKanji sKana" $::lNounThings {
+   foreach "sNative sKanji sKana" $::nouns::lNounThings {
 	
 	    lappend lWords $sNative
 	    
@@ -248,7 +247,7 @@ proc buildNounVocab {} {
 		set aKana($sNative) $sKana;
 	}
 	
-	foreach "sNative sKanji sKana" $::lNounPlaces {
+	foreach "sNative sKanji sKana" $::nouns::lNounPlaces {
 	
 	    lappend lWords $sNative
 	    
@@ -268,4 +267,53 @@ proc buildNounVocab {} {
 
 }
 
-lappend lessonBuilders buildNounVocab
+# ---------
+# selectors
+# ---------
+proc randomThing {tags} {
+
+   set n [llength $::nouns::lNounThings]
+   set j [expr {int(rand()*31*$n)%$n}]
+   set j [expr $j - ($j % 3)]
+   set lOut [lrange $::nouns::lNounThings $j [expr $j + 2]]
+   lappend lOut {}
+   return $lOut
+
+}
+
+proc randomPerson {tags} {
+
+   set n [llength $::nouns::lPronouns]
+   set j [expr {int(rand()*31*$n)%$n}]
+   set j [expr $j - ($j % 3)]
+   set lOut [lrange $::nouns::lPronouns $j [expr $j + 2]]
+   lappend lOut {}
+   return $lOut
+
+}
+
+proc randomPlace {tags} {
+
+   set n [llength $::nouns::lNounPlaces]
+   set j [expr {int(rand()*31*$n)%$n}]
+   set j [expr $j - ($j % 3)]
+   set lOut [lrange $::nouns::lNounPlaces $j [expr $j + 2]]
+   lappend lOut {}
+   return $lOut
+
+}
+
+proc randomModeOfTransportation {tags} {
+
+   set n [llength $::nouns::lModesOfTransportation]
+   set j [expr {int(rand()*31*$n)%$n}]
+   set j [expr $j - ($j % 3)]
+   set lOut [lrange $::nouns::lModesOfTransportation $j [expr $j + 2]]
+   lappend lOut {}
+   return $lOut
+
+}
+
+};
+
+lappend lessonBuilders ::nouns::buildNounVocab

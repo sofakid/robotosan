@@ -1,3 +1,5 @@
+namespace eval verbs {
+
 # -------------
 # Ichidan verbs
 # -------------
@@ -181,32 +183,32 @@ proc conjugateGodan {sVerb} {
    
 }
 
-proc baseA {l} {
-  return [lindex $l 0]
+proc baseA {v} {
+  return [lindex $v 0]
 }
 
-proc baseI {l} {
-  return [lindex $l 1]
+proc baseI {v} {
+  return [lindex $v 1]
 }
 
-proc baseU {l} {
-  return [lindex $l 2]
+proc baseU {v} {
+  return [lindex $v 2]
 }
 
-proc baseE {l} {
-  return [lindex $l 3]
+proc baseE {v} {
+  return [lindex $v 3]
 }
 
-proc baseO {l} {
-  return [lindex $l 4]
+proc baseO {v} {
+  return [lindex $v 4]
 }
 
-proc baseTa {l} {
-  return [lindex $l 5]
+proc baseTa {v} {
+  return [lindex $v 5]
 }
 
-proc baseTe {l} {
-  return [lindex $l 6]
+proc baseTe {v} {
+  return [lindex $v 6]
 }
 
 # for the vFunctions, pass in a list 
@@ -371,9 +373,9 @@ proc tagV {fmt eng} {
 
 proc buildGodanConj {} {
    
-    foreach {fmt func} $::lBasicConj {
+    foreach {fmt func} $::verbs::lBasicConj {
    
-        foreach {eng kanji kana} $::lGodan {
+        foreach {eng kanji kana} $::verbs::lGodan {
    
             set question [tagV $fmt $eng]
             set kanji    [eval "$func \"[conjugateGodan $kanji]\""]
@@ -389,9 +391,9 @@ proc buildGodanConj {} {
 
 proc buildGodanMoreConj {} {
    
-    foreach {fmt func} $::lMoreConj {
+    foreach {fmt func} $::verbs::lMoreConj {
    
-        foreach {eng kanji kana} $::lGodan {
+        foreach {eng kanji kana} $::verbs::lGodan {
    
             set question [tagV $fmt $eng]
             set kanji    [eval "$func \"[conjugateGodan $kanji]\""]
@@ -407,9 +409,9 @@ proc buildGodanMoreConj {} {
 
 proc buildGodanBasicConj {} {
    
-    foreach {fmt func} $::lBasicConj {
+    foreach {fmt func} $::verbs::lBasicConj {
    
-        foreach {eng kanji kana} $::lGodan {
+        foreach {eng kanji kana} $::verbs::lGodan {
    
             set question [tagV $fmt $eng]
             set kanji    [eval "$func \"[conjugateGodan $kanji]\""]
@@ -425,9 +427,9 @@ proc buildGodanBasicConj {} {
 
 proc buildGodanPoliteConj {} {
    
-    foreach {fmt func} $::lPoliteConj {
+    foreach {fmt func} $::verbs::lPoliteConj {
    
-        foreach {eng kanji kana} $::lGodan {
+        foreach {eng kanji kana} $::verbs::lGodan {
    
             set question [tagV $fmt $eng]
             set kanji    [eval "$func \"[conjugateGodan $kanji]\""]
@@ -444,9 +446,9 @@ proc buildGodanPoliteConj {} {
 
 proc buildSuruMoreConj {} {
    
-    foreach {fmt func} $::lMoreConj {
+    foreach {fmt func} $::verbs::lMoreConj {
    
-        foreach {eng kanji kana} $::lSuru {
+        foreach {eng kanji kana} $::verbs::lSuru {
    
             set question [tagV $fmt $eng]
             set kanji    [eval "$func \"[conjugateSuru $kanji]\""]
@@ -462,9 +464,9 @@ proc buildSuruMoreConj {} {
 
 proc buildSuruBasicConj {} {
    
-    foreach {fmt func} $::lBasicSuruConj {
+    foreach {fmt func} $::verbs::lBasicSuruConj {
    
-        foreach {eng kanji kana} $::lSuru {
+        foreach {eng kanji kana} $::verbs::lSuru {
    
             set question [tagV $fmt $eng]
             set kanji    [eval "$func \"[conjugateSuru $kanji]\""]
@@ -480,9 +482,9 @@ proc buildSuruBasicConj {} {
 
 proc buildSuruPoliteConj {} {
    
-    foreach {fmt func} $::lPoliteConj {
+    foreach {fmt func} $::verbs::lPoliteConj {
    
-        foreach {eng kanji kana} $::lSuru {
+        foreach {eng kanji kana} $::verbs::lSuru {
    
             set question [tagV $fmt $eng]
             set kanji    [eval "$func \"[conjugateSuru $kanji]\""]
@@ -499,9 +501,9 @@ proc buildSuruPoliteConj {} {
 
 proc buildIchidanConj {} {
    
-    foreach {fmt func} $::lBasicConj {
+    foreach {fmt func} $::verbs::lBasicConj {
    
-        foreach {eng kanji kana} $::lIchidan {
+        foreach {eng kanji kana} $::verbs::lIchidan {
    
             set question [tagV $fmt $eng]
             set kanji    [eval "$func \"[conjugateIchidan $kanji]\""]
@@ -523,7 +525,7 @@ proc buildIchidanConj {} {
 
 proc buildVerbsVocab {} {
 
-   foreach "sNative sKanji sKana" $::lIchidan {
+   foreach "sNative sKanji sKana" $::verbs::lIchidan {
 	
 	    lappend lWords $sNative
 	    
@@ -535,7 +537,7 @@ proc buildVerbsVocab {} {
 		set aKana($sNative) $sKana;
 	}
 	
-	foreach "sNative sKanji sKana" $::lGodan {
+	foreach "sNative sKanji sKana" $::verbs::lGodan {
 	
 	    lappend lWords $sNative
 	    
@@ -548,7 +550,7 @@ proc buildVerbsVocab {} {
 	}
 	
 	set sSuru "する"
-	foreach "sNative sKanji sKana" $::lSuru {
+	foreach "sNative sKanji sKana" $::verbs::lSuru {
 	
 	    lappend lWords $sNative
 	    
@@ -570,7 +572,7 @@ proc buildVerbsVocab {} {
 
 proc buildIchidanVocab {} {
 
-   foreach "sNative sKanji sKana" $::lIchidan {
+   foreach "sNative sKanji sKana" $::verbs::lIchidan {
 	
 	    lappend lWords $sNative
 	    
@@ -592,7 +594,7 @@ proc buildIchidanVocab {} {
 
 proc buildGodanVocab {} {
 
-   foreach "sNative sKanji sKana" $::lGodan {
+   foreach "sNative sKanji sKana" $::verbs::lGodan {
 	
 	    lappend lWords $sNative
 	    
@@ -616,7 +618,7 @@ proc buildSuruVocab {} {
 
     set sSuru "する"
 
-    foreach "sNative sKanji sKana" $::lSuru {
+    foreach "sNative sKanji sKana" $::verbs::lSuru {
 	
 	    lappend lWords $sNative
 	    
@@ -653,24 +655,205 @@ proc buildVerbsConj {} {
    
 }
 
+
+# ---------
+# selectors
+# ---------
+proc randomVerb {tags} {
+
+   foreach {en kanji kana} $::aLessons("verbsVocab") {
+      lappend lOut "$en" "$kanji" "$kana" {}
+   }
+
+   set n [llength $lOut]
+   set j [expr {int(rand()*31*$n)%$n}]
+   set j [expr $j - ($j % 4)]
+   return [lrange $lOut $j [expr $j + 3]]
+
+}
+
+proc wordEntry {} {
+    return [list en kanji kana tags]
+}
+
+proc selectGodan {$lTags} {
+
+   foreach {en kanji kana} $::verbs::lGodan {
+      lappend lOut "$en" "$kanji" "$kana" {}
+   }
+
+   set n [llength $lOut]
+   set j [expr {int(rand()*31*$n)%$n}]
+   set j [expr $j - ($j % 4)]
+   return [lrange $lOut $j [expr $j + 3]]
+    
+    
+}
+
+proc selectIchidan {$lTags} {
+
+   foreach {en kanji kana} $::verbs::lIchidan {
+      lappend lOut "$en" "$kanji" "$kana" {}
+   }
+
+   set n [llength $lOut]
+   set j [expr {int(rand()*31*$n)%$n}]
+   set j [expr $j - ($j % 4)]
+   return [lrange $lOut $j [expr $j + 3]]
+      
+}
+
+proc selectSuru {$lTags} {
+
+   foreach {en kanji kana} $::verbs::lSuru {
+      lappend lOut "$en" "$kanji" "$kana" {}
+   }
+
+   set n [llength $lOut]
+   set j [expr {int(rand()*31*$n)%$n}]
+   set j [expr $j - ($j % 4)]
+   return [lrange $lOut $j [expr $j + 3]]
+    
+    
+}
+
+proc defineSelectorsWithMutators {muts} {
+
+   foreach mut $muts {
+       set s "return \[selectWithMutator $mut\]"
+       puts "#####\n############# $s"
+       eval proc select_$mut {tags} {$s}
+   }
+   
+   puts [info proc]
+   
+}
+
+proc selectWithMutator {mutator} {
+
+    switch [random 3] {
+
+        0 {
+            set conj "conjugateIchidan"
+            foreach [wordEntry] [selectIchidan {}] {}
+        } 
+        
+        1 {
+            set conj "conjugateGodan"
+            foreach [wordEntry] [selectGodan {}] {}
+        } 
+        
+        2 {
+            set conj "conjugateSuru"
+            foreach [wordEntry] [selectSuru {}] {}
+        } 
+    }
+    return [list $en [$mutator [$conj $kanji]] [$mutator [$conj $kana]] {} ]
+
+}
+
+defineSelectorsWithMutators {
+
+ vNeg  
+ vNegPast 
+ vNoun
+ vPresFutPol
+ vPastPol
+ vNegPol
+ vNegPastPol
+ vDesireTo
+ vDesireToPol
+ vPresFut
+ vIf
+ vCan
+ vCanPol
+ vLets
+ vTryTo
+ vWantSomeoneElseTo
+ vCommandRude
+ vCommand
+ vCommandPol
+ vPresDoing
+ vPresDoingPol
+ vPast
+ vIfAndWhen
+ vDoSuchAs
+
+}
+
+proc selectBaseA {tags} {
+    return [selectWithMutator "baseA"]
+}
+
+proc selectBaseI {tags} {
+    return [selectWithMutator "baseI"]
+}
+
+proc selectBaseU {tags} {
+    return [selectWithMutator "baseU"]
+}
+
+proc selectBaseE {tags} {
+    return [selectWithMutator "baseE"]
+}
+
+proc selectBaseO {tags} {
+    return [selectWithMutator "baseO"]
+}
+
+proc selectBaseTa {tags} {
+    return [selectWithMutator "baseTa"]
+}
+
+proc selectBaseTe {tags} {
+    return [selectWithMutator "baseTe"]
+}
+
+proc selectNeg {tags} {
+    return [selectWithMutator "vNeg"]
+}
+
+proc selectBaseTe {tags} {
+    return [selectWithMutator "baseTe"]
+}
+
+proc selectBaseTe {tags} {
+    return [selectWithMutator "baseTe"]
+}
+
+proc selectBaseTe {tags} {
+    return [selectWithMutator "baseTe"]
+}
+
+proc selectBaseTe {tags} {
+    return [selectWithMutator "baseTe"]
+}
+
+proc selectBaseTe {tags} {
+    return [selectWithMutator "baseTe"]
+}
+
+};
+
+
 importBuilders {
 
-  buildGodanBasicConj 
-  buildGodanPoliteConj 
-  buildGodanMoreConj 
+  ::verbs::buildGodanBasicConj 
+  ::verbs::buildGodanPoliteConj 
+  ::verbs::buildGodanMoreConj 
 
-  buildIchidanConj 
+  ::verbs::buildIchidanConj 
 
-  buildSuruBasicConj 
-  buildSuruPoliteConj 
-  buildSuruMoreConj 
+  ::verbs::buildSuruBasicConj 
+  ::verbs::buildSuruPoliteConj 
+  ::verbs::buildSuruMoreConj 
 
-  buildGodanVocab 
-  buildIchidanVocab 
-  buildSuruVocab 
+  ::verbs::buildGodanVocab 
+  ::verbs::buildIchidanVocab 
+  ::verbs::buildSuruVocab 
 
-  buildVerbsVocab
+  ::verbs::buildVerbsVocab
 
-  buildVerbsConj
+  ::verbs::buildVerbsConj
 
 }

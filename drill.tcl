@@ -214,6 +214,11 @@ proc checkTimer {} {
 	return [format "%.2d:%.2d" [expr $out / 60] [expr $out % 60]]
 }
 
+proc random {n} {
+    return [expr (int(rand()*31)*41)%$n]
+}
+
+
 
 # ---
 # run
@@ -224,4 +229,4 @@ puts $argv
 #load lessons
 utfSource ja_lessons.tcl
 
-go [catalog $argv] 
+#go [catalog $argv] 

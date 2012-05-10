@@ -24,6 +24,7 @@ foreach sFile {
   ja_misc.tcl
 
   ja_prim.tcl
+  ja_patterns.tcl
   
 } { utfSource $sFile }
 
