@@ -229,4 +229,4 @@ puts $argv
 #load lessons
 utfSource ja_lessons.tcl
 
-#go [catalog $argv] 
+go [catalog $argv] 

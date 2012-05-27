@@ -327,6 +327,18 @@ set lVocabLessons {
 
 }
 
+"v7verbs" {
+  {cut, slice}          {切る} {きる}
+  {send}                {送る} {おくる}
+  {give}                {あげる} {あげる}
+  {receive}             {もらう} {もらう}
+  {lend}                {貸す} {かす}
+  {borrow}              {借りる} {かりる}
+  {teach}               {教える} {おしえる}
+  {learn}               {習う} {ならう}
+  {make (a phone call)} {かける} {かける}
+}
+
 "v7" {
   
   {cut, slice}          {切る} {きる}
@@ -391,7 +403,7 @@ set lVocabLessons {
   {kind}                     {親切な} {しんせつな}
   {healthy, sound, cheerful} {元気な} {げんきな}
   {free (time)}              {暇な} {ひまな}
-  {convenient}               {分離な} {ぶんりな}
+  {convenient}               {便利な} {べんりな}
   {fine, nice, wonderful}    {すてきな} {すてきな}
 
   {big, large}      {大きい} {おおきい}
@@ -445,47 +457,161 @@ set lVocabLessons {
 
 "v9" {
 
-   {understand} {} {}
-   {have (objects)} {} {}
-   {have (people, animals)} {} {}
+   {understand} {分かる} {わかる}
+   {have (objects)} {ある} {ある}
+   {have (people, animals)} {いる} {いる}
    
-   {like} {} {}
-   {dislike} {} {}
-   {sports} {} {}
-   {baseball} {} {}
-   {dance} {} {}
-   {music} {} {}
-   {song,singing} {} {}
-   {classical music} {} {}
-   {jazz} {} {}
-   {concert} {} {}
-   {karaoke} {} {}
-   {kabuki} {} {}
-   {picture, drawing} {} {}
+   {like} {好きな} {すきな}
+   {dislike} {嫌いな} {きらいな}
    
-   {letter,character} {} {}
-   {chinese characters} {} {}
-   {roman alphabet} {} {}
-   {} {} {}
-   {} {} {}
-   {} {} {}
-   {} {} {}
-   {} {} {}
-   {} {} {}
-   {} {} {}
-   {} {} {}
-   {} {} {}
-   {} {} {}
-   {} {} {}
-   {} {} {}
-   {} {} {}
-   {} {} {}
-   {} {} {}
-   {} {} {}
-   {} {} {}
-   {} {} {}
-   {} {} {}
+   {good at} {上手な} {じょうずな}
+   {poor at} {下手な} {へたな}
+   {dish / cooking / cuisine} {料理} {りょうり}
+   {drinks} {飲み物} {のみもの}
+   
+   {sports} {スポーツ} {スポーツ}
+   {baseball} {野球} {やきゅう}
+   {dance} {ダンス} {ダンス}
+   {music} {音楽} {おんがく}
+   {song,singing} {歌} {うた}
+   {classical music} {クラシック} {クラシック}
+   {jazz} {ジャズ} {ジャズ}
+   {concert} {コンサート} {コンサート}
+   {karaoke} {カラオケ} {カラオケ}
+   {kabuki} {歌舞伎} {かぶき}
+   {picture, drawing} {絵} {え}
+   
+   {letter,character} {字} {じ}
+   {chinese characters} {漢字} {かんじ}
+   {roman alphabet} {ローマ字} {ローマ字}
+   {small change} {細かいお金} {こまかいおかね}
+   {ticket} {チケット} {チケット}
+   {time} {時間} {じかん}
+   {errand/something to do} {用事} {ようじ}
+   {appointment/promise} {約束} {やくそく}
+   {(somone else's) husband} {ご主人} {ごしゅじん}
+   {(my) husband 1} {夫} {おっと} 
+   {(my) husband 2} {主人} {しゅじん}
+   {(someone else's) wife} {奥さん} {おくさん}
+   {(my) wife 1} {妻} {つま}
+   {(my) wife 2} {家内} {かない}
+   {child #check} {子供} {こども}
+   
+   {well, much} {{よく} {よい}} {{よく} {よい}}
+   {mostly, roughly} {だいたい} {だいたい}
+   {many, much (quant.)} {たくさん} {たくさん}
+   {a little, a few (quant.)} {少し} {すこし}
+   {not at all (w/negs)} {全然} {ぜんぜん}
+   {early, quickly, fast} {{早く} {速く}} {はやく}
+   
+   {because} {から} {から}
+   {why} {どうして} {どうして}
+   
+   {sorry to hear that/ that's a pity} {残念ですね} {ざんねんですね}
+   {sorry} {すみません} {すみません}
+  
+}
 
+"v9-extra-music" {
+
+  {pop} {ポップス} {ポップス}
+  {rock} {ロック} {ロック}
+  {jazz} {ジャズ} {ジャズ}
+  {latin} {ラテン} {ラテン}
+  {classical} {クラシック} {クラシック}
+  {folk} {民謡} {みんよう}
+  {traditional japanese pop} {演歌} {えんか}
+  {musical} {ミュージカル} {ミュージカル}
+  {opera} {オペラ} {オペラ}
+  {shibuyakei} {渋谷系} {しぶやけい}
+  
+}
+
+"v9-extra-sports" {
+
+  {softball} {ソフトボール} {ソフトボール}
+  {soccer} {サッカー} {サッカー}
+  {rugby} {ラグビー} {ラグビー}
+  {volleyball} {バレーボール} {バリーボール}
+  {basketball} {バスケットボール} {バスケットボール}
+  {tennis} {テニス} {テニス}
+  {bowling} {ボーリング} {ボーリング}
+  {skiing} {スキー} {スキー}
+  {skating} {スケート} {スケート}
+  
+  {baseball} {野球} {やきゅう}
+  {ping pong　漢字} {卓球} {たっきゅう}
+  {ping pong　カタカナ} {ピンポン} {ピンポン}
+  {sumo} {相撲} {すもう}
+  {judo} {柔道} {じゅうどう}
+  {kendo} {剣道} {けんどう}
+  {swimming} {水泳} {すいえい}
+  
+}
+
+"v9-extra-film" {
+  {sci-fi} {ＳＦ} {SF}
+  {horror} {ホラー} {ホラー}
+  {anime} {アニメ} {アニメ}
+  {documentary} {ドキュメンタリー} {ドキュメンタリー}
+  {romantic} {恋愛} {れんあい}
+  {mystery} {ミステリー} {ミステリー}
+  {movie based on a classic} {文芸} {ぶんげい}
+  {war} {戦争} {せんそう}
+  {action} {アクション} {アクション}
+  {comedy} {喜劇} {きげき}
+}
+
+"v10" {
+  {exist, be (animate)} {いる} {いる}
+  {exist, be (inanimate)} {ある} {ある}
+  {various} {いろいろな} {いろいろな}
+  
+  {man} {男の人} {おとこのひと}
+  {woman} {女の人} {おんなのひと}
+  {boy} {男の子} {おとこのこ}
+  {girl} {女の子} {おんなのこ}
+  
+  {dog} {犬} {いぬ}
+  {cat} {猫} {ねこ}
+  {tree, wood} {木} {き}
+  
+  {thing} {物} {もの}
+  {film} {フィルム} {ふぃるむ}
+  {battery} {電池} {でんち}
+  {box} {箱} {はこ}
+  
+  {switch} {スイッチ} {スイッチ}
+  {refrigerator} {冷蔵庫} {れいぞうこ}
+  {table} {テーブル} {テーブル}
+  {bed} {ベッド} {ベッド}
+  {shelf} {棚} {たな}
+  {door} {ドア} {ドア}
+  {window} {窓} {まど}
+  
+  {public mailbox} {ポスト} {ポスト}
+  {building} {ビル} {ビル}
+  {park} {公園} {こうえん}
+  {coffee shop} {喫茶店} {きっさてん}
+  {bookstore} {本屋} {ほんや}
+  {-store} {ーや} {ーや}
+  {spot to catch taxis, trains, etc..} {のりば} {のりば}
+  
+  {prefecture} {県} {けん}
+  
+  {on, above, over} {上} {うえ}
+  {under, below, beneath} {下} {した}
+  {front, before} {前} {まえ}
+  {back, behind} {後ろ} {うしろ}
+  {right (side)} {右} {みぎ}
+  {left (side)} {左} {ひだり}
+  {in, inside} {中} {なか}
+  {outside} {外} {そと}
+  {next, next door} {隣} {となり}
+  {near, vicinity} {近く} {ちかく}
+  {between, among} {間} {あいだ}
+  {the most} {一番} {いちばん}
+  {first shelf} {一段目} {いちだんめ}
 }
 
 "v7conv" {  
@@ -581,6 +707,10 @@ set lVocabLessons {
    {what day of the week} {何曜日} {なんようび}
    {from -} {から} {から}
    {up to -} {まで} {まで}
+   
+  {already}         {もう} {もう}
+  {not yet}         {まだ} {まだ}
+  {from now on}     {これから} {これから}
   
 }
 

@@ -271,6 +271,10 @@ proc vLets {v} {
    return "[baseO $v]"
 }
 
+proc vLetsPol {v} {
+   return "[baseI $v]ましょう"
+}
+
 proc vTryTo {v} {
    return "[baseO $v]とする"
 }
@@ -768,6 +772,7 @@ defineSelectorsWithMutators {
  vCan
  vCanPol
  vLets
+ vLetsPol
  vTryTo
  vWantSomeoneElseTo
  vCommandRude

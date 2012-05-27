@@ -9,17 +9,25 @@ variable selector
 
 variable tags {
 
-  <s>     ::prim::randomSubject
-  <adj>   ::adj::selectAdj
-  <do>    ::nouns::randomThing
-  <place> ::nouns::randomPlace
-  <v>     ::verbs::randomVerb
-  <v-mashou> ::verbs::selectBaseO
-  <v-neg> ::verbs::select_vNeg
-  <v-past> ::verbs::select_vPast
-  <v-pres> ::verbs::select_vPres
+  <s>           ::prim::randomSubject
+  <adj>         ::adj::selectAdj
+  <do>          ::nouns::randomThing
+  <place>       ::nouns::randomPlace
+  <n-animate>   ::nouns::randomAnimate
+  <n-inanimate> ::nouns::randomInanimate  
+  <v>           ::verbs::randomVerb
+  <v-lets>      ::verbs::select_vLets
+  <v-neg>       ::verbs::select_vNeg
+  <v-past>      ::verbs::select_vPast
+  <v-pres>      ::verbs::select_vPres
+  <v-lets-pol>  ::verbs::select_vLetsPol
+  <v-neg-pol>   ::verbs::select_vNegPol
+  <v-past-pol>  ::verbs::select_vPastPol
+  <v-pres-pol>  ::verbs::select_vPresPol
   
-  <trans> ::nouns::randomModeOfTransportation
+  <trans>      ::nouns::randomModeOfTransportation
+  
+  <time-adv>   ::temporal::selectTimeAdverb
 
 }; foreach {tag func} $tags {
   set selector($tag) $func
@@ -36,10 +44,24 @@ variable sentenceProtos {
   {<place>で<do>を<v>} {I <v> <do> at the <place>} {}
   {<do>は<place>です} {The <do> is at the <place>} {}
   {<place>へ<trans>でいく} {I will go to the <place> by <trans>} {} 
-  {<place>へ<do>を<v-mashou>} {Let's <v-mashou> a <do> to the <place>} {}
-  {<v-past>} {Did <v-past>} {}
-  {<do>を<v-neg>} {I will not <v-neg> the <do>}
+  {<place>へ<do>を<v-lets>} {Let's <v-lets> a <do> to the <place>} {}
+  {<place>で<do>を<v-lets>} {Let's <v-lets> a <do> at the <place>} {}
+  {<place>へ<do>を<v-lets-pol>} {(pol) Let's <v-lets-pol> a <do> to the <place>} {}
+  {<place>で<do>を<v-lets-pol>} {(pol) Let's <v-lets-pol> a <do> at the <place>} {}
+  {<v-past>} {Did <v-past>} {past}
+  {<time-adv>に<v-past>} {<time-adv> I did <v-past>} {past}
+  {<do>を<v-neg>} {I will not <v-neg> the <do>} {}
+  {<place>で<v-neg>} {I won't <v-neg> at the <place>} {}
   
+}
+
+variable lesson10 {
+
+  {<n-inanimate>があります} {There is a <n-inanimate>} {}
+  {<n-animate>がいます} {There is a <n-animate>} {}
+  {<place>に<n-inanimate>があります} {There is a <n-inanimate> in the <place>} {}
+  {<place>に<n-animate>がいます} {There is a <n-animate> in the <place>} {}
+
 }
 
 proc tag {fmt tag word} {
@@ -100,9 +122,9 @@ proc selectPronoun {} {
   
 }
 
-proc buildSentence {} {
+proc buildSentence {protos} {
 
-  foreach {sJa sEn lTags} $::patt::sentenceProtos {
+  foreach {sJa sEn lTags} $protos {
   
       puts [oneLine $sJa $sEn $lTags]
         
@@ -110,24 +132,38 @@ proc buildSentence {} {
   return [oneLine $sJa $sEn $lTags]
 }
 
-proc buildPatterns {} {
+proc buildPatterns {lessonName protos} {
    #puts "patterns"
 
    for {set i 0} {$i < 10} {incr i} {
-      set l [buildSentence]
+      set l [buildSentence $protos]
       puts "[lindex $l 0] - [lindex $l 2]"
    }
 
    for {set i 0} {$i < 10} {incr i} {
-      foreach el [buildSentence] {
-         lappend lessons $el
+      foreach {sJa sEn lTags} $protos {
+      
+         foreach el [oneLine $sJa $sEn $lTags] {
+            puts "$lessonName - $el"
+            lappend lessons $el
+         }
+      
       }
+      
    }
    
-   set ::aLessons("sentenceBasic") $lessons
+   set ::aLessons($lessonName) $lessons
+}
+
+proc buildLessons {} {
+
+    buildPatterns "sentenceBasic" $::patt::sentenceProtos
+
+    buildPatterns "lesson10" $::patt::lesson10
+
 }
 
 }; # end namespace
 
 
-lappend lessonBuilders ::patt::buildPatterns
+lappend lessonBuilders ::patt::buildLessons

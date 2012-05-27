@@ -22,6 +22,7 @@ foreach sFile {
   ja_nouns.tcl
   ja_adjectives.tcl
   ja_misc.tcl
+  ja_temporal.tcl
 
   ja_prim.tcl
   ja_patterns.tcl
