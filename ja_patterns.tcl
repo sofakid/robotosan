@@ -68,60 +68,75 @@ variable sentenceProtos {
 
 variable lesson10 {
 
-  {<n-inanimate>があります} {There is a <n-inanimate>} {}
-  {<n-animate>がいます} {There is a <n-animate>} {}
+  {<n-inanimate>が<aru>} 
+        {There <aru> a <n-inanimate>} 
+        { { tense { most } { <aru> } } }
+        
+  {<n-animate>が<iru>} 
+        {There <iru> a <n-animate>} 
+        { { tense { most } { <iru> } } }
   
-  {<place>に<n-inanimate>があります} {There is a <n-inanimate> (in the) <place>} {}
-  {<place>に<n-animate>がいます} {There is a <n-animate> (in the) <place>} {}
+  
+  
+  {<place>に<n-inanimate>が<aru>} 
+        {There <aru> a <n-inanimate> (in the) <place>} 
+        { { tense { most } { <aru> } } }
 
-  {<place>に<n-inanimate>がありました} {There was a <n-inanimate> (in the) <place>} {}
-  {<place>に<n-animate>がいました} {There was a <n-animate> (in the) <place>} {}
+  {<place>に<n-inanimate>が<aru>} 
+        {(Polite) There <aru> a <n-inanimate> (in the) <place>} 
+        { { tense { mostNoFutPol } { <aru> } } }
+        
+  {<place>に<n-animate>が<iru>} 
+        {There <iru> a <n-animate> (in the) <place>} 
+        { { tense { most } { <iru> } } }
 
-  {<n-animate>は<place>にいます} {The <n-animate> is (in the) <place>} {}
-  {<n-inanimate>は<place>にあります} {The <n-inanimate> is (in the) <place>} {}
+  {<place>に<n-animate>が<iru>} 
+        {(Polite) There <iru> a <n-animate> (in the) <place>} 
+        { { tense { mostNoFutPol } { <iru> } } }
 
-  {<n-animate>は<place>にいました} {The <n-animate> was (in the) <place>} {}
-  {<n-inanimate>は<place>にありました} {The <n-inanimate> was (in the) <place>} {}
 
-  {<n-animate>はどこにいますか} {Where is the <n-animate>?} {}
-  {<n-inanimate>はどこにありますか} {Where is the <n-inanimate>?} {}
 
-  {<n-animate>はどこにいましたか} {Where was the <n-animate>?} {}
-  {<n-inanimate>はどこにありましたか} {Where was the <n-inanimate>?} {}
+  {<n-inanimate>は<place>に<aru>} 
+        {The <n-inanimate> <aru> (in the) <place>} 
+        { { tense { most } { <aru> } } }
 
-  {<do>の<position>に<n-animate>がいます} {There is a <n-animate> <position> (the) <do>} {}
-  {<do>の<position>に<n-inanimate>があります} {There is a <n-inanimate> <position> (the) <do>} {}
+  {<n-animate>は<place>に<iru>}
+        {The <n-animate> <iru> (in the) <place>} 
+        { { tense { most } { <iru> } } }
 
-  {<do>の<position>に<n-animate>がいました} {There was a <n-animate> <position> (the) <do>} {}
-  {<do>の<position>に<n-inanimate>がありました} {There was a <n-inanimate> <position> (the) <do>} {}
+
+
+  {<n-inanimate>はどこに<aru>か} 
+        {Where <aru> (the) <n-inanimate>?} 
+        { { tense { most } { <aru> } } }
+
+  {<n-animate>はどこに<iru>か} 
+        {Where <iru> (the) <n-animate>?} 
+        { { tense { most } { <iru> } } }
+
+
+
+  {<do>の<position>に<n-inanimate>が<aru>} 
+        {There <aru> a <n-inanimate> <position> (the) <do>} 
+        { { tense { most } { <aru> } } }
+
+  {<do>の<position>に<n-animate>が<iru>} 
+        {There <iru> a <n-animate> <position> (the) <do>} 
+        { { tense { most } { <iru> } } }
+
 
 
   {<n1>と<n2>の<between>に<n-inanimate>が<aru>} 
         {There <aru> a <n-inanimate> <between> (the) <n1> and (the) <n2>} 
-        {
-            { tense 
-                    { most } 
-                    { <aru> } 
-            }
-        }
+        { { tense { most } { <aru> } } }
         
   {<n1>と<n2>の<between>に<n-inanimate>が<aru>} 
         {(Polite) There <aru> a <n-inanimate> <between> (the) <n1> and (the) <n2>} 
-        {
-            { tense 
-                    { mostNoFutPol } 
-                    { <aru> } 
-            }
-        }
+        { { tense { mostNoFutPol } { <aru> } } }
 
 　{<n1>と<n2>の<between>に<n-animate>が<iru>} 
         {There <iru> a <n-animate> <between> (the) <n1> and (the) <n2>} 
-        { 
-            { tense 
-                { most } 
-                { <iru> } 
-            }
-        }
+        { { tense { most } { <iru> } } }
 
 }
 
