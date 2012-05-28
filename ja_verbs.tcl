@@ -214,6 +214,14 @@ proc baseTe {v} {
 # for the vFunctions, pass in a list 
 # returned by one of the conjugateDans
 
+proc vNegPres {v} {
+   return [vNeg $v]
+}
+
+proc vNegFut {v} {
+   return [vNeg $v]
+}
+
 proc vNeg {v} {
    return "[baseA $v]ない"
 }
@@ -226,6 +234,14 @@ proc vNoun {v} {
    return "[baseI $v]"
 }
 
+proc vPresPol {v} {
+   return [vPresFutPol $v]
+}
+
+proc vFutPol {v} {
+   return [vPresFutPol $v]
+}
+
 proc vPresFutPol {v} {
    return "[baseI $v]ます"
 }
@@ -233,6 +249,16 @@ proc vPresFutPol {v} {
 proc vPastPol {v} {
    return "[baseI $v]ました"
 }
+
+
+proc vNegPresPol {v} {
+   return [vNegPol $v]
+}
+
+proc vNegFutPol {v} {
+   return [vNegPol $v]
+}
+
 
 proc vNegPol {v} {
    return "[baseI $v]ません"
@@ -248,6 +274,14 @@ proc vDesireTo {v} {
 
 proc vDesireToPol {v} {
    return "[baseI $v]たいです"
+}
+
+proc vPres {v} {
+   return [vPresFut $v]
+}
+
+proc vFut {v} {
+   return [vPresFut $v]
 }
 
 proc vPresFut {v} {
@@ -663,7 +697,7 @@ proc buildVerbsConj {} {
 # ---------
 # selectors
 # ---------
-proc randomVerb {tags} {
+proc randomVerb {meta} {
 
    foreach {en kanji kana} $::aLessons("verbsVocab") {
       lappend lOut "$en" "$kanji" "$kana" {}
@@ -677,7 +711,7 @@ proc randomVerb {tags} {
 }
 
 proc wordEntry {} {
-    return [list en kanji kana tags]
+    return [list en kanji kana meta]
 }
 
 proc selectGodan {$lTags} {
@@ -724,16 +758,16 @@ proc selectSuru {$lTags} {
 proc defineSelectorsWithMutators {muts} {
 
    foreach mut $muts {
-       set s "return \[selectWithMutator $mut\]"
+       set s "return \[selectWithMutator $mut \$meta\]"
        puts "#####\n############# $s"
-       eval proc select_$mut {tags} {$s}
+       eval proc select_$mut {meta} {$s}
    }
    
    puts [info proc]
    
 }
 
-proc selectWithMutator {mutator} {
+proc selectWithMutator {mutator meta} {
 
     switch [random 3] {
 
@@ -752,7 +786,7 @@ proc selectWithMutator {mutator} {
             foreach [wordEntry] [selectSuru {}] {}
         } 
     }
-    return [list $en [$mutator [$conj $kanji]] [$mutator [$conj $kana]] {} ]
+    return [mutate $mutator $conj $en $kanji $kana $meta]
 
 }
 
@@ -786,57 +820,130 @@ defineSelectorsWithMutators {
 
 }
 
-proc selectBaseA {tags} {
-    return [selectWithMutator "baseA"]
+proc selectBaseA {meta} {
+    return [selectWithMutator "baseA" $meta]
 }
 
-proc selectBaseI {tags} {
-    return [selectWithMutator "baseI"]
+proc selectBaseI {meta} {
+    return [selectWithMutator "baseI" $meta]
 }
 
-proc selectBaseU {tags} {
-    return [selectWithMutator "baseU"]
+proc selectBaseU {meta} {
+    return [selectWithMutator "baseU" $meta]
 }
 
-proc selectBaseE {tags} {
-    return [selectWithMutator "baseE"]
+proc selectBaseE {meta} {
+    return [selectWithMutator "baseE" $meta]
 }
 
-proc selectBaseO {tags} {
-    return [selectWithMutator "baseO"]
+proc selectBaseO {meta} {
+    return [selectWithMutator "baseO" $meta]
 }
 
-proc selectBaseTa {tags} {
-    return [selectWithMutator "baseTa"]
+proc selectBaseTa {meta} {
+    return [selectWithMutator "baseTa" $meta]
 }
 
-proc selectBaseTe {tags} {
-    return [selectWithMutator "baseTe"]
+proc selectBaseTe {meta} {
+    return [selectWithMutator "baseTe" $meta]
 }
 
-proc selectNeg {tags} {
-    return [selectWithMutator "vNeg"]
+proc selectNeg {meta} {
+    return [selectWithMutator "vNeg" $meta]
 }
 
-proc selectBaseTe {tags} {
-    return [selectWithMutator "baseTe"]
+proc selectBaseTe {meta} {
+    return [selectWithMutator "baseTe" $meta]
 }
 
-proc selectBaseTe {tags} {
-    return [selectWithMutator "baseTe"]
+proc selectBaseTe {meta} {
+    return [selectWithMutator "baseTe" $meta]
 }
 
-proc selectBaseTe {tags} {
-    return [selectWithMutator "baseTe"]
+proc selectBaseTe {meta} {
+    return [selectWithMutator "baseTe" $meta]
 }
 
-proc selectBaseTe {tags} {
-    return [selectWithMutator "baseTe"]
+proc selectBaseTe {meta} {
+    return [selectWithMutator "baseTe" $meta]
 }
 
-proc selectBaseTe {tags} {
-    return [selectWithMutator "baseTe"]
+proc selectBaseTe {meta} {
+    return [selectWithMutator "baseTe" $meta]
 }
+
+proc mutate {mut conj en kanji kana meta} {
+    return [list $en [$mut [$conj $kanji]] [$mut [$conj $kana]] $meta ]
+}
+
+proc tenseMutator {tense} {
+   # just convert like: past --> vPast
+   set first [string toupper [string index $tense 0]]
+   set rest  [string range $tense 1 [expr [string length $tense] -1]]
+   return "v$first$rest"
+}
+
+# for avoiding typing set aEn("past") "was"
+proc aEn {key val} {
+   uplevel "set aEn($key) \"$val\""
+}
+
+# selectors for special cases
+proc selectAru {meta tense} {
+
+    set kanji "ある"
+    set kana  "ある"
+    
+    set conj conjugateGodan
+   
+    aEn "past"    "was"
+    aEn "pres"    "is"
+    aEn "fut"     "will be"
+    aEn "negPast" "wasn't"
+    aEn "negPres" "isn't"
+    aEn "negFut"  "won't be"
+    
+    aEn "pastPol"    "was"
+    aEn "presPol"    "is"
+    aEn "futPol"     "will be"
+    aEn "negPastPol" "wasn't"
+    aEn "negPresPol" "isn't"
+    aEn "negFutPol"  "won't be"
+    
+    set mut [tenseMutator $tense]
+
+    return [mutate $mut $conj $aEn($tense) $kanji $kana $meta]
+
+}
+
+# selectors for special cases
+proc selectIru {meta tense} {
+
+    set kanji "いる"
+    set kana  "いる"
+    
+    set conj conjugateIchidan
+   
+    aEn "past"    "was"
+    aEn "pres"    "is"
+    aEn "fut"     "will be"
+    aEn "negPast" "wasn't"
+    aEn "negPres" "isn't"
+    aEn "negFut"  "won't be"
+    
+    aEn "pastPol"    "was"
+    aEn "presPol"    "is"
+    aEn "futPol"     "will be"
+    aEn "negPastPol" "wasn't"
+    aEn "negPresPol" "isn't"
+    aEn "negFutPol"  "won't be"
+    
+    set mut [tenseMutator $tense]
+
+    return [mutate $mut $conj $aEn($tense) $kanji $kana $meta]
+
+}
+
 
 };
 

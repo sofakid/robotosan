@@ -31,7 +31,7 @@ proc go {sLesson} {
 	set n [llength $lWords]
 	
 	set iGroupSize 4
-	set iRepetitions 3
+	set iRepetitions 1
 	
 	for {set i 0} {$i < $n} {incr i $iGroupSize} {
 		

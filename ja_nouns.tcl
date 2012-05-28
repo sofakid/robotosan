@@ -366,9 +366,24 @@ variable lAnimateObjects {
   {person}                 {人} {ひと}
   {friend}                 {友達} {ともだち}
   {family}                 {家族} {かぞく}
+};
+
+variable lPositions {
+  {on top of}       {上} {うえ}
+  {underneath}      {下} {した}
+  {before}          {前} {まえ}
+  {behind}          {後ろ} {うしろ}
+  {to the right of} {右} {みぎ}
+  {to the left of}  {左} {ひだり}
+  {inside of}       {中} {なか}
+  {outside of}      {外} {そと}
+  {next to}         {隣} {となり}
+  {near}            {近く} {ちかく}
+};
+
+variable lBetween {
+  {between}         {間} {あいだ}
 }
-
-
 
 proc buildNounVocab {} {
 
@@ -443,6 +458,18 @@ proc randomAnimate {tags} {
 proc randomInanimate {tags} {
 
    return [randomFromList $::nouns::lInanimateObjects $tags]
+
+}
+
+proc randomPosition {tags} {
+
+   return [randomFromList $::nouns::lPositions $tags]
+
+}
+
+proc randomBetween {tags} {
+
+   return [randomFromList $::nouns::lBetween $tags]
 
 }
 

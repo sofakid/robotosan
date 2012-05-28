@@ -9,12 +9,22 @@ variable selector
 
 variable tags {
 
+  <aru>         ::verbs::selectAru
+  <iru>         ::verbs::selectIru
+
   <s>           ::prim::randomSubject
   <adj>         ::adj::selectAdj
   <do>          ::nouns::randomThing
   <place>       ::nouns::randomPlace
   <n-animate>   ::nouns::randomAnimate
   <n-inanimate> ::nouns::randomInanimate  
+  
+  <n1>          ::nouns::randomThing
+  <n2>          ::nouns::randomThing
+  
+  <position>    ::nouns::randomPosition
+  <between>     ::nouns::randomBetween
+  
   <v>           ::verbs::randomVerb
   <v-lets>      ::verbs::select_vLets
   <v-neg>       ::verbs::select_vNeg
@@ -24,6 +34,7 @@ variable tags {
   <v-neg-pol>   ::verbs::select_vNegPol
   <v-past-pol>  ::verbs::select_vPastPol
   <v-pres-pol>  ::verbs::select_vPresPol
+  
   
   <trans>      ::nouns::randomModeOfTransportation
   
@@ -59,8 +70,49 @@ variable lesson10 {
 
   {<n-inanimate>があります} {There is a <n-inanimate>} {}
   {<n-animate>がいます} {There is a <n-animate>} {}
-  {<place>に<n-inanimate>があります} {There is a <n-inanimate> in the <place>} {}
-  {<place>に<n-animate>がいます} {There is a <n-animate> in the <place>} {}
+  
+  {<place>に<n-inanimate>があります} {There is a <n-inanimate> (in the) <place>} {}
+  {<place>に<n-animate>がいます} {There is a <n-animate> (in the) <place>} {}
+
+  {<place>に<n-inanimate>がありました} {There was a <n-inanimate> (in the) <place>} {}
+  {<place>に<n-animate>がいました} {There was a <n-animate> (in the) <place>} {}
+
+  {<n-animate>は<place>にいます} {The <n-animate> is (in the) <place>} {}
+  {<n-inanimate>は<place>にあります} {The <n-inanimate> is (in the) <place>} {}
+
+  {<n-animate>は<place>にいました} {The <n-animate> was (in the) <place>} {}
+  {<n-inanimate>は<place>にありました} {The <n-inanimate> was (in the) <place>} {}
+
+  {<n-animate>はどこにいますか} {Where is the <n-animate>?} {}
+  {<n-inanimate>はどこにありますか} {Where is the <n-inanimate>?} {}
+
+  {<n-animate>はどこにいましたか} {Where was the <n-animate>?} {}
+  {<n-inanimate>はどこにありましたか} {Where was the <n-inanimate>?} {}
+
+  {<do>の<position>に<n-animate>がいます} {There is a <n-animate> <position> (the) <do>} {}
+  {<do>の<position>に<n-inanimate>があります} {There is a <n-inanimate> <position> (the) <do>} {}
+
+  {<do>の<position>に<n-animate>がいました} {There was a <n-animate> <position> (the) <do>} {}
+  {<do>の<position>に<n-inanimate>がありました} {There was a <n-inanimate> <position> (the) <do>} {}
+
+
+  {<n1>と<n2>の<between>に<n-inanimate>が<aru>} 
+        {There <aru> a <n-inanimate> <between> (the) <n1> and (the) <n2>} 
+        {
+            { tense 
+                    { past pres fut negPast negPres negFut } 
+                    { <aru> } 
+            }
+        }
+
+　{<n1>と<n2>の<between>に<n-animate>が<iru>} 
+        {There <iru> a <n-animate> <between> (the) <n1> and (the) <n2>} 
+        { 
+            { tense 
+                { past pres fut negPast negPres negFut } 
+                { <iru> } 
+            }
+        }
 
 }
 
@@ -73,7 +125,7 @@ proc setStuff {sTag lStuff} {
 
     upvar outKanji oKanji outKana oKana outEn oEn
 
-    foreach {en kanji kana keywords} $lStuff {
+    foreach {en kanji kana meta} $lStuff {
        set oKanji [tag $oKanji $sTag $kanji]
        set oKana  [tag $oKana $sTag $kana]
        set oEn    [tag $oEn $sTag $en]
@@ -94,24 +146,137 @@ proc forTags {s body} {
     }
 }
 
+proc forMetaLoops {lMeta lBodies} {
+  #todo
+  # { tense 
+  #     { past pres fut pastNeg presNeg futNeg } 
+  #     { <iru> } 
+  # }
+  
+  # set the code to run
+  foreach {meta body} $lBodies {
+     set a($meta) $body
+  }
+  
+  # if no meta loops are found we run a(default) at the end
+  set metaFound 0
+  
+  # find the loop metas
+  foreach meta $lMeta {
+  
+     # all loop metas are lists themselves
+     if {0 < [llength $meta]} {
+     
+        set metaKw [lindex $meta 0] 
+     
+        switch $metaKw {
+     
+            tense {
+                set metaFound 1
+            
+                set lTenses [lindex $meta 1]
+                set lTargets [lindex $meta 2]
 
-proc oneLine {sJa sEn lTags} { 
-   set sNextBeg -1
-   
-   set outKanji $sJa
-   set outKana $sJa
-   set outEn $sEn
-   
-   forTags $sJa {
-      
-      set lStuff [$::patt::selector($sTag) $lTags]
-      
-      #puts "=== $outEn $outKanji $outKana"
-      #puts "### $lStuff"
-      setStuff $sTag $lStuff
-   }
-   
-   return [list $outEn $outKanji $outKana]
+                foreach tense $lTenses {
+                    uplevel "set tense $tense ; set lTargets $lTargets ; $a($metaKw)"
+                }
+
+            }
+            
+         }
+     }
+  
+  }
+  
+  if {0 == $metaFound} {
+      uplevel $a(default)
+  }
+  
+}
+
+proc oneLine {sJa sEn lMeta} { 
+    set sNextBeg -1
+    
+    # prepare a list to output
+    # { english kanji kana english kanji kana }
+    #
+    # lOut autoset by lappend
+    
+    forMetaLoops $lMeta {
+    
+        tense {
+            # this is a foreach tense as $tense with $lTargets tags
+            
+            # reinit output sentences
+            set outKanji $sJa
+            set outKana $sJa
+            set outEn $sEn
+            
+            # note looping through sJa as we don't modify 
+            # it and it contains all the tags
+            #
+            # sets $sTag on each loop
+            forTags $sJa {
+              
+                set foundTarget 0
+                # pass the tense to the selector for the target tags
+                foreach target $lTargets {
+                
+                    if {$sTag == $target} {
+                        set lStuff [$::patt::selector($sTag) $lMeta $tense]
+                        set foundTarget 1
+                    } 
+                
+                }
+               
+                if {$foundTarget == 0} {
+                    set lStuff [$::patt::selector($sTag) $lMeta]
+                }
+              
+                # replaces <tag> in the sentences with the {en kanji kana} from lStuff 
+                # as the sentences: outEn, outKanji, and outKana
+                setStuff $sTag $lStuff
+                #puts "lStuff: $lStuff - $outEn - $outKanji"
+            
+            }
+        
+            lappend lOut $outEn $outKanji $outKana
+            
+        }
+
+        default {
+        
+         # reinit output sentences
+            set outKanji $sJa
+            set outKana $sJa
+            set outEn $sEn
+            
+            # note looping through sJa as we don't modify 
+            # it and it contains all the tags
+            #
+            # sets $sTag on each loop
+            forTags $sJa {
+              
+                set lStuff [$::patt::selector($sTag) $lMeta]
+               
+                # replaces <tag> in the sentences with the {en kanji kana} from lStuff 
+                # as the sentences: outEn, outKanji, and outKana
+                setStuff $sTag $lStuff
+                #puts "lStuff: $lStuff - $outEn - $outKanji"
+            
+            }
+        
+            lappend lOut $outEn $outKanji $outKana
+         
+        }
+        
+    }
+
+    if {[info exists lOut]} {
+        return $lOut
+    }
+    
+    return [list "0xdeadbeef" "0xdeadbeef" "0xdeadbeef" "0xdeadbeef" ]
 }
 
 proc selectNoun {} {
@@ -124,12 +289,12 @@ proc selectPronoun {} {
 
 proc buildSentence {protos} {
 
-  foreach {sJa sEn lTags} $protos {
+  foreach {sJa sEn lMeta} $protos {
   
-      puts [oneLine $sJa $sEn $lTags]
+      puts [oneLine $sJa $sEn $lMeta]
         
   }
-  return [oneLine $sJa $sEn $lTags]
+  return [oneLine $sJa $sEn $lMeta]
 }
 
 proc buildPatterns {lessonName protos} {
@@ -140,10 +305,10 @@ proc buildPatterns {lessonName protos} {
       puts "[lindex $l 0] - [lindex $l 2]"
    }
 
-   for {set i 0} {$i < 10} {incr i} {
-      foreach {sJa sEn lTags} $protos {
+   for {set i 0} {$i < 30} {incr i} {
+      foreach {sJa sEn lMeta} $protos {
       
-         foreach el [oneLine $sJa $sEn $lTags] {
+         foreach el [oneLine $sJa $sEn $lMeta] {
             puts "$lessonName - $el"
             lappend lessons $el
          }
