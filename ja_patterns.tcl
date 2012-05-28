@@ -100,7 +100,16 @@ variable lesson10 {
         {There <aru> a <n-inanimate> <between> (the) <n1> and (the) <n2>} 
         {
             { tense 
-                    { past pres fut negPast negPres negFut } 
+                    { most } 
+                    { <aru> } 
+            }
+        }
+        
+  {<n1>と<n2>の<between>に<n-inanimate>が<aru>} 
+        {(Polite) There <aru> a <n-inanimate> <between> (the) <n1> and (the) <n2>} 
+        {
+            { tense 
+                    { mostNoFutPol } 
                     { <aru> } 
             }
         }
@@ -109,7 +118,7 @@ variable lesson10 {
         {There <iru> a <n-animate> <between> (the) <n1> and (the) <n2>} 
         { 
             { tense 
-                { past pres fut negPast negPres negFut } 
+                { most } 
                 { <iru> } 
             }
         }
@@ -146,6 +155,58 @@ proc forTags {s body} {
     }
 }
 
+proc expandShortcut {l short exp} {
+
+    if {0 <= [set i [lsearch -exact $l $short]]} {
+        set lFirst [lrange $l 0 $i]
+        set lRest [lrange $l [expr $i + 1] end]
+       
+        if {0 < $i} {
+            set lOut $lFirst
+        }
+       
+        if {{} != $lRest} {
+            foreach e $lRest {
+                lappend lOut $e
+            }
+        }
+        
+        foreach e $exp {
+            lappend lOut $e
+        }
+       
+    }
+    
+    if {[info exists lOut]} {
+        return $lOut
+    }
+    
+    return $l
+
+}
+
+proc parseTenses {tenses} {
+
+    puts "Parsing tenses $tenses"
+
+    foreach {short exp} {
+    
+    "most"      "past pres fut negPast negPres negFut"
+    "mostNoFut" "past pres negPast negPres"
+    
+    "mostPol"      "pastPol presPol futPol negPastPol negPresPol negFutPol"
+    "mostNoFutPol" "pastPol presPol negPastPol negPresPol"
+    
+    } {
+        set tenses [expandShortcut $tenses $short $exp]
+    }
+    
+    puts "Parsed tenses $tenses"
+    
+    return $tenses
+}
+
+
 proc forMetaLoops {lMeta lBodies} {
   #todo
   # { tense 
@@ -174,7 +235,8 @@ proc forMetaLoops {lMeta lBodies} {
             tense {
                 set metaFound 1
             
-                set lTenses [lindex $meta 1]
+                set lTenses [parseTenses [lindex $meta 1]]
+                
                 set lTargets [lindex $meta 2]
 
                 foreach tense $lTenses {
