@@ -852,26 +852,6 @@ proc selectNeg {meta} {
     return [selectWithMutator "vNeg" $meta]
 }
 
-proc selectBaseTe {meta} {
-    return [selectWithMutator "baseTe" $meta]
-}
-
-proc selectBaseTe {meta} {
-    return [selectWithMutator "baseTe" $meta]
-}
-
-proc selectBaseTe {meta} {
-    return [selectWithMutator "baseTe" $meta]
-}
-
-proc selectBaseTe {meta} {
-    return [selectWithMutator "baseTe" $meta]
-}
-
-proc selectBaseTe {meta} {
-    return [selectWithMutator "baseTe" $meta]
-}
-
 proc mutate {mut conj en kanji kana meta} {
     return [list $en [$mut [$conj $kanji]] [$mut [$conj $kana]] $meta ]
 }
