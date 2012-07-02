@@ -343,7 +343,7 @@ set lVocabLessons {
   
   {cut, slice}          {切る} {きる}
   {send}                {送る} {おくる}
-  {give}                {あげる} {あげる}
+  {give}                {上げる} {あげる}
   {receive}             {もらう} {もらう}
   {lend}                {貸す} {かす}
   {borrow}              {借りる} {かりる}
@@ -595,7 +595,7 @@ set lVocabLessons {
   {coffee shop} {喫茶店} {きっさてん}
   {bookstore} {本屋} {ほんや}
   {-store} {ーや} {ーや}
-  {spot to catch taxis, trains, etc..} {のりば} {のりば}
+  {spot to catch taxis, trains, etc..} {乗り場} {のりば}
   
   {prefecture} {県} {けん}
   
@@ -712,6 +712,122 @@ set lVocabLessons {
   {not yet}         {まだ} {まだ}
   {from now on}     {これから} {これから}
   
+}
+
+"v12" {
+   {easy, simple}   {簡単な} {かんたんな}
+   
+   {near}   {近い} {ちかい}
+   {far}   {遠い} {とおい}
+   {fast, early}   {{速い} {早い}} {はやい}
+   {slow, late}   {遅い} {おそい}
+   {many (people), much}   {多い} {おおい}
+   
+   {few (people), a little}   {少ない} {すくない}
+   
+   {warm}   {{暖かい} {温かい}} {あたたかい}
+   {cool (climate)}   {涼しい} {すずしい}
+   {sweet}   {甘い} {あまい}
+   {hot (spicy)}   {辛い} {からい}
+   {heavy}   {重い} {おもい}
+   {light}   {軽い} {かるい}
+   {prefer (coffee)}   {いい} {いい}
+   
+   {season}   {季節} {きせつ}
+   {spring}   {春} {はる}
+   {summer}   {夏} {なつ}
+   {autumn}   {秋} {あき}
+   {winter}   {冬} {ふゆ}
+   
+   {weather}   {天気} {てんき}
+   {rain, rainy}   {雨} {あめ}
+   {snow, snowy}   {雪} {ゆき}
+   {cloudy}   {曇り} {くもり}
+
+   {hotel}   {ホテル} {ホテル}
+   {airport}   {空港} {くうこう}
+   {sea, ocean}   {海} {うみ}
+   {world}   {世界} {せかい}
+   
+   {festival}   {お祭り} {おまつり}
+   {(final) exam}   {試験} {しけん}
+   
+   {sukiyaki}   {すき焼き} {すきやき}
+   {sashimi}   {刺身} {さしみ}
+   {sushi}   {おすし} {おすし}
+   {tempura}   {てんぷら} {てんぷら}
+   
+   {floral arrangement}   {生け花} {いけばな}
+   {maple, red autumn leaves}   {紅葉} {もみじ}
+   
+   {which one (between two things)}   {どちら} {どちら}
+   {both}   {どちらま} {どちらも}
+   
+   {by far}   {ずっと} {ずっと}
+   {for the first time}   {初めて} {はじめて}
+   
+   {I'm home}   {ただいま} {ただいま}
+   {Welcome home}   {お帰りなさい} {おかえりなさい}
+   {That's amazing}   {すごいですね} {すごいですね}
+   {but}   {でも} {でも}
+   {I'm tired}   {疲れました} {つかれました}
+   
+}
+
+"v13" {
+   {play} {遊ぶ} {あそぶ}
+   {swim} {泳ぐ} {およぐ}
+   {go to meet, welcome} {迎える} {むかえる}
+   {get tired} {疲れる} {つかれる}
+   {send (a letter)} {出す} {だす}
+   {enter (a coffee shop)} {入る} {はいる}
+   {exit (a coffee shop)} {出る} {でる}
+   {marry} {結婚する} {けっこんする}
+   {do shopping} {買い物する} {かいものする}
+   {dine} {食事する} {しょくじする}
+   {take a walk} {散歩する} {さんぽする}
+   
+   {hard, tough, severe} {大変な} {たいへんな}
+   
+   {want} {欲しい} {ほしい}
+   
+   {lonely} {寂しい} {さびしい}
+   {wide, spacious} {広い} {ひろい}
+   {narrow, small (room, etc.)} {狭い} {せまい}
+   
+   {municipal office, city hall} {市役所} {しやくしょ}
+   {swimming pool} {プール} {プール}
+   {river} {川} {かわ}
+   
+   {economy} {経済} {けいざい}
+   {fine arts} {美術} {びじゅつ}
+   {fishing} {釣り} {つり}
+   {skiing} {スキー} {スキー}
+   {meeting, conference} {会議} {かいぎ}
+   {registration} {登録} {とうろく}
+   
+   {weekend} {週末} {しゅうまつ}
+   {about (time)} {ごろ} {ごろ}
+   
+   {something} {何か} {なにか}
+   {somewhere} {どこか} {どこか}
+   
+}
+   
+"v13「会話」" {   
+   {(I'm) hungry} {おなかがすきました} {おなかがすきました}
+   {(I'm) full} {おなかがいっぱいです} {おなかがいっぱいです}
+   {(I'm) thirsty} {のどがかわきました} {のどがかわきました}
+   {I agree with you} {そうですね} {そうですね}
+   {Let's do that (agreeing with someone's suggestion)} {そうしましょう} {そうしましょう}
+   
+   {May I take your order?} {ご注文は} {ごちゅうもんは}
+   {set meal} {定食} {ていしょく}
+   {beef rice bowl} {牛どん} {ぎゅうどん}
+   {Please wait a moment} {少々お待ちください} {しょうしょうおまちください}
+   {separately} {別々に} {べつべつに}
+   {Russia} {ロシア} {ロシア}
+   
 }
 
 }; # end set lLessons

@@ -186,7 +186,7 @@ set lNounThings {
   {essay}                       {レポート} {レポート}
   {assignment}                  {レポート} {レポート}
   {photograph}                  {写真} {しゃしん}
-  {store, shop}                 {店} {みせ}
+  {store}                 {店} {みせ}
   {restaurant}                  {レストラン} {レストラン}
   {garden}                      {庭} {にわ}
   {flower garden}               {庭} {にわ}
@@ -314,7 +314,6 @@ variable lInanimateObjects {
   {bread}       {パン} {パン}
   {egg}         {卵} {たまご}
   {meat}        {肉} {にく}
-  {fish}        {魚} {さかな}
   {vegetable}   {野菜} {やさい}
   {fruit}       {果物} {くだもの}
   
@@ -341,7 +340,7 @@ variable lInanimateObjects {
   {essay}                       {レポート} {レポート}
   {assignment}                  {レポート} {レポート}
   {photograph}                  {写真} {しゃしん}
-  {store, shop}                 {店} {みせ}
+  {store}                       {店} {みせ}
   {restaurant}                  {レストラン} {レストラン}
   {garden}                      {庭} {にわ}
   {flower garden}               {庭} {にわ}
@@ -366,6 +365,13 @@ variable lAnimateObjects {
   {person}                 {人} {ひと}
   {friend}                 {友達} {ともだち}
   {family}                 {家族} {かぞく}
+  {dog}                    {犬} {いぬ}
+  {cat}                    {猫} {ねこ}
+  {fish}                   {魚} {さかな}
+  {man} {男の人} {おとこのひと}
+  {woman} {女の人} {おんなのひと}
+  {boy} {男の子} {おとこのこ}
+  {girl} {女の子} {おんなのこ}
 };
 
 variable lPositions {

@@ -12,6 +12,10 @@ set lIchidan {
    {look} {見る} {みる}
    {watch} {見る} {みる}
    
+   {go to meet, welcome} {迎える} {むかえる}
+  
+  {teach}               {教える} {おしえる}
+   
 }; # end set lIchidan
 
 # -----------
@@ -38,7 +42,7 @@ set lGodan {
    {sell} {売る} {うる}
    {sleep} {寝る} {ねる}
    {speak} {話す} {はなす}
-   {study(godan)} {学ぶ} {まなぶ}
+   {learn (study)} {学ぶ} {まなぶ}
    {swim} {泳ぐ} {およぐ}
    {take a rest} {休む} {やすむ}
    {take a holiday} {休む} {やすむ}
@@ -59,6 +63,21 @@ set lGodan {
   {take (a photo)}      {撮る} {とる}
   {understand}    {分かる} {わかる}
   {recognize}    {分かる} {わかる}
+  
+  {cut, slice}          {切る} {きる}
+  {send}                {送る} {おくる}
+  {give}                {上げる} {あげる}
+  {receive}             {もらう} {もらう}
+  {lend}                {貸す} {かす}
+  {borrow}              {借りる} {かりる}
+  {learn (from)}               {習う} {ならう}
+  {make (a phone call)} {かける} {かける}
+  
+  {get tired} {疲れる} {つかれる}
+  {send (a letter)} {出す} {だす}
+  {enter (a coffee shop)} {入る} {はいる}
+  {exit (a coffee shop)} {出る} {でる}
+  
  
 }; # end set lGodan
 
@@ -133,6 +152,19 @@ proc conjugateSuru {b} {
    return [list $b$a $b$i $b$u $b$e $b$o $b$ta $b$te]
 }
 
+proc conjugateDesu {b} {
+
+   # todo these aren't all right
+   foreach [list a i u e o ta te] {
+        {でわ} {でし} {です} {で} {でしょう} {でした} {でして}
+   } {};
+
+   return [list $a $i $u $e $o $ta $te]
+}
+
+proc conjugateMasu {} {
+
+}
 
 proc conjugateIchidan {sVerb} {
 
@@ -360,7 +392,6 @@ set lBasicConj {
   {will <v>}                    {vPresFut}
   {a <v>}                       {vNoun}
   {want to <v>}                 {vDesireTo}
-  {<v>! (rude)}                 {vCommandRude}
   {<v>!}                        {vCommand}
   {<v>ing}                      {vPresDoing}
   {if (i) <v>}                  {vIf}
@@ -374,7 +405,6 @@ set lBasicSuruConj {
   {to <v>}                      {vPresFut}
   {will <v>}                    {vPresFut}
   {want to <v>}                 {vDesireTo}
-  {<v>! (rude)}                 {vCommandRude}
   {<v>!}                        {vCommand}
   {<v>ing}                      {vPresDoing}
   {if (i) <v>}                  {vIf}
@@ -397,6 +427,7 @@ set lMoreConj {
   {try to <v>}                  {vTryTo}
   {want someone else to <v>}    {vWantSomeoneElseTo}
   {let's <v>}                   {vLets}
+  {<v>! (rude)}                 {vCommandRude}
   
 }; # end lBasicConj
 
@@ -866,6 +897,34 @@ proc tenseMutator {tense} {
 # for avoiding typing set aEn("past") "was"
 proc aEn {key val} {
    uplevel "set aEn($key) \"$val\""
+}
+
+# selectors for special cases
+proc selectDesu {meta tense} {
+
+    set kanji "です"
+    set kana  "です"
+    
+    set conj conjugateDesu
+   
+    aEn "past"    "was"
+    aEn "pres"    "is"
+    aEn "fut"     "will be"
+    aEn "negPast" "wasn't"
+    aEn "negPres" "isn't"
+    aEn "negFut"  "won't be"
+    
+    aEn "pastPol"    "was"
+    aEn "presPol"    "is"
+    aEn "futPol"     "will be"
+    aEn "negPastPol" "wasn't"
+    aEn "negPresPol" "isn't"
+    aEn "negFutPol"  "won't be"
+    
+    set mut [tenseMutator $tense]
+
+    return [mutate $mut $conj $aEn($tense) $kanji $kana $meta]
+
 }
 
 # selectors for special cases

@@ -1,4 +1,27 @@
 #!/usr/bin/tclsh
+
+namespace eval settings {
+	
+	variable defaults {
+	   -rep 4
+	   -group 4
+	}
+	
+	variable rep
+	variable group
+	
+	proc parse {argv} {
+	
+	    array set o [concat $::settings::defaults $argv]
+
+		set ::settings::rep $o(-rep)
+		set ::settings::group $o(-group)
+		
+	}
+}
+
+::settings::parse $argv
+
 proc utfSource {sFile} {
 
 	set fin [open $sFile]
@@ -7,7 +30,7 @@ proc utfSource {sFile} {
 	close $fin
 	return [uplevel 1 $script]
 }
-	
+
 proc go {sLesson} {
 	global aLessons;
 
@@ -30,8 +53,8 @@ proc go {sLesson} {
 	
 	set n [llength $lWords]
 	
-	set iGroupSize 4
-	set iRepetitions 1
+	set iGroupSize $::settings::group
+	set iRepetitions $::settings::rep
 	
 	for {set i 0} {$i < $n} {incr i $iGroupSize} {
 		
@@ -167,7 +190,7 @@ proc lShuffle { lIn } {
 
 #go {numbers};
 
-proc catalog {argv} {
+proc catalog {} {
 	
 	global aLessons;
 	
@@ -185,11 +208,7 @@ proc catalog {argv} {
 			incr i
 		}
 		
-		if {[llength $argv] > 0} {
-		   set sChoice $argv
-		} else {
-			gets stdin sChoice
-		}
+		gets stdin sChoice
 		
 		if {![catch {set choice [expr int($sChoice)]} uDummy]} {
 			if {$choice > [llength $lLessons]} {
@@ -224,9 +243,8 @@ proc random {n} {
 # run
 # ---
 
-puts $argv
 
 #load lessons
 utfSource ja_lessons.tcl
 
-go [catalog $argv] 
+go [catalog] 

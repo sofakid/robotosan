@@ -11,6 +11,7 @@ variable tags {
 
   <aru>         ::verbs::selectAru
   <iru>         ::verbs::selectIru
+  <desu>        ::verbs::selectDesu
 
   <s>           ::prim::randomSubject
   <adj>         ::adj::selectAdj
@@ -66,6 +67,19 @@ variable sentenceProtos {
   
 }
 
+variable lesson6 {
+
+  {<n1>はどんな<n2><desu>か} 
+        {What kind of <n2> <desu> <n1>?} 
+        { { tense { most } { <desu> } } }
+
+  {<n1>はどう<desu>か} 
+        {How <desu> <n1>?} 
+        { { tense { most } { <desu> } } }
+
+
+}
+
 variable lesson10 {
 
   {<n-inanimate>が<aru>} 
@@ -84,7 +98,7 @@ variable lesson10 {
 
   {<place>に<n-inanimate>が<aru>} 
         {(Polite) There <aru> a <n-inanimate> (in the) <place>} 
-        { { tense { mostNoFutPol } { <aru> } } }
+        { { tense { mostPol } { <aru> } } }
         
   {<place>に<n-animate>が<iru>} 
         {There <iru> a <n-animate> (in the) <place>} 
@@ -92,7 +106,7 @@ variable lesson10 {
 
   {<place>に<n-animate>が<iru>} 
         {(Polite) There <iru> a <n-animate> (in the) <place>} 
-        { { tense { mostNoFutPol } { <iru> } } }
+        { { tense { mostPol } { <iru> } } }
 
 
 
@@ -132,9 +146,9 @@ variable lesson10 {
         
   {<n1>と<n2>の<between>に<n-inanimate>が<aru>} 
         {(Polite) There <aru> a <n-inanimate> <between> (the) <n1> and (the) <n2>} 
-        { { tense { mostNoFutPol } { <aru> } } }
-
-　{<n1>と<n2>の<between>に<n-animate>が<iru>} 
+        { { tense { mostPol } { <aru> } } }
+        
+  {<n1>と<n2>の<between>に<n-animate>が<iru>} 
         {There <iru> a <n-animate> <between> (the) <n1> and (the) <n2>} 
         { { tense { most } { <iru> } } }
 
@@ -202,21 +216,17 @@ proc expandShortcut {l short exp} {
 
 proc parseTenses {tenses} {
 
-    puts "Parsing tenses $tenses"
-
     foreach {short exp} {
     
-    "most"      "past pres fut negPast negPres negFut"
-    "mostNoFut" "past pres negPast negPres"
-    
-    "mostPol"      "pastPol presPol futPol negPastPol negPresPol negFutPol"
-    "mostNoFutPol" "pastPol presPol negPastPol negPresPol"
-    
+        "mostFut"      "past pres fut negPast negPres negFut"
+        "most"      "past pres negPast negPres"
+        
+        "mostFutPol"      "pastPol presPol futPol negPastPol negPresPol negFutPol"
+        "mostPol" "pastPol presPol negPastPol negPresPol"
+        
     } {
         set tenses [expandShortcut $tenses $short $exp]
     }
-    
-    puts "Parsed tenses $tenses"
     
     return $tenses
 }
@@ -356,37 +366,31 @@ proc oneLine {sJa sEn lMeta} {
     return [list "0xdeadbeef" "0xdeadbeef" "0xdeadbeef" "0xdeadbeef" ]
 }
 
-proc selectNoun {} {
-
-}
-
-proc selectPronoun {} {
-  
-}
-
 proc buildSentence {protos} {
 
-  foreach {sJa sEn lMeta} $protos {
-  
-      puts [oneLine $sJa $sEn $lMeta]
-        
-  }
+  foreach {sJa sEn lMeta} $protos {}
   return [oneLine $sJa $sEn $lMeta]
 }
 
 proc buildPatterns {lessonName protos} {
-   #puts "patterns"
+   puts "patterns"
 
-   for {set i 0} {$i < 10} {incr i} {
-      set l [buildSentence $protos]
-      puts "[lindex $l 0] - [lindex $l 2]"
-   }
+   #for {set i 0} {$i < 10} {incr i} {
+   #   set l [buildSentence $protos]
+   #   puts "[lindex $l 0] - [lindex $l 2]"
+   #}
 
-   for {set i 0} {$i < 30} {incr i} {
+   for {set i 0} {$i < 3} {incr i} {
       foreach {sJa sEn lMeta} $protos {
       
-         foreach el [oneLine $sJa $sEn $lMeta] {
-            puts "$lessonName - $el"
+         set result [oneLine $sJa $sEn $lMeta]
+         
+         puts "Prototype: $sJa"
+         foreach {en kanji kana} $result {
+             puts "$en - $kanji"   
+         }
+         
+         foreach el $result {
             lappend lessons $el
          }
       
@@ -401,7 +405,9 @@ proc buildLessons {} {
 
     buildPatterns "sentenceBasic" $::patt::sentenceProtos
 
+    buildPatterns "lesson6" $::patt::lesson6
     buildPatterns "lesson10" $::patt::lesson10
+    
 
 }
 
