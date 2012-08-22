@@ -730,7 +730,7 @@ set lVocabLessons {
    {sweet}   {甘い} {あまい}
    {hot (spicy)}   {辛い} {からい}
    {heavy}   {重い} {おもい}
-   {light}   {軽い} {かるい}
+   {light (weight)}   {軽い} {かるい}
    {prefer (coffee)}   {いい} {いい}
    
    {season}   {季節} {きせつ}
@@ -828,6 +828,92 @@ set lVocabLessons {
    {separately} {別々に} {べつべつに}
    {Russia} {ロシア} {ロシア}
    
+}
+
+"v14" {
+
+{turn on} {つける} {つける}
+{turn off} {消す} {けす}
+{open} {開ける} {あける}
+{close, shut} {閉める} {しめる}
+{hurry} {急ぐ} {いそぐ}
+{wait} {待つ} {まつ}
+{stop, park} {止める} {とめる}
+{turn} {曲がる} {まがる}
+{turn right} {右へ曲がる} {みぎへまがる}
+{turn left} {左へ曲がる} {ひだりへまがる}
+{hold} {持つ} {もつ}
+{take, pass} {取る} {とる}
+{help (with a task)} {手伝う} {てつだう}
+{call} {呼ぶ} {よぶ}
+{speak, talk} {話す} {はなす}
+{show} {見せる} {みせる}
+{tell} {教える} {おしえる}
+{start, begin} {始める} {はじめる}
+{rain (verb)} {降る} {ふる}
+{copy} {コピーする} {コピーする}
+
+{air conditioner} {エアコン} {エアコン}
+{passport} {パスポート} {パスポート}
+{name} {名前} {なまえ}
+{address} {住所} {じゅうしょ}
+{map} {地図} {ちず}
+
+{salt} {塩} {しお}
+{sugar} {砂糖} {さとう}
+{how to read} {読み方} {よみかた}
+{how to eat} {食べ方} {たべかた}
+
+{slowly, leisurely} {ゆっくり} {ゆっくり}
+{immediately} {すぐ} {すぐ}
+{again} {また} {また}
+{later} {後で} {あとで}
+{a little more} {もう少し} {もうすこし}
+
+{sure, certainly} {いいですよ} {いいですよう}
+{right (when encouraging some course of action)} {さあ} {さあ}
+{Oh! (in surprise and wonder)} {あれ} {あれ}
+
+}
+
+"v15" {
+  {stand up} {立つ} {たつ}
+  {sit down} {座る} {すわる}
+  {use} {使う} {つかう}
+  {put} {置く} {おく}
+  {make} {作る} {つくる}
+  {produce} {造る} {つくる}
+  {sell} {売る} {うる}
+  {know} {知る} {しる}
+  {live (somewhere)} {住む} {すむ}
+  {do research} {研究する} {けんきゅうする}
+  {knowing} {知っている} {しっている}
+  {liveing} {住んでいる} {すんでいる}
+  
+  {materials, data} {資料} {しりょう}
+  {catalog} {カタログ} {カタログ}
+  {timetable (of transit)} {時刻表} {じこくひょう}
+
+  {clothes} {服} {ふく}
+  {western clothes} {洋服} {ようふく}
+  {products} {製品} {せいひん}
+  {software} {ソフト} {ソフト}
+  {specialty, field of study} {専門} {せんもん}
+
+  {dentist} {歯医者} {はいしゃ}
+  {barber} {床屋} {とこや}
+
+  {(theater) ticket agency} {プレイガイド} {プレイガイド}
+  
+  {single, unmarried} {独身} {どくしん}
+
+  {especially} {特に} {とくに}
+  {remember, recollect} {思い出す} {おもいだす}
+  
+  {your family} {ご家族} {ごかぞく}
+  {be (honorific equiv of います)} {いらっしゃいます} {いらっしゃいます}
+  {senior high shcool} {高校} {こうこう}
+
 }
 
 }; # end set lLessons

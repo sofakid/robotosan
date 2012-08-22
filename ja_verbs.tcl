@@ -15,6 +15,15 @@ set lIchidan {
    {go to meet, welcome} {迎える} {むかえる}
   
   {teach}               {教える} {おしえる}
+
+  {turn on} {つける} {つける}
+{open} {開ける} {あける}
+{close, shut} {閉める} {しめる}
+{stop, park} {止める} {とめる}
+{show} {見せる} {みせる}
+{tell} {教える} {おしえる}
+{start} {始める} {はじめる}
+{begin} {始める} {はじめる}
    
 }; # end set lIchidan
 
@@ -77,7 +86,18 @@ set lGodan {
   {send (a letter)} {出す} {だす}
   {enter (a coffee shop)} {入る} {はいる}
   {exit (a coffee shop)} {出る} {でる}
-  
+
+{hurry} {急ぐ} {いそぐ}
+{wait} {待つ} {まつ}
+{turn} {曲がる} {まがる}
+{turn right} {右へ曲がる} {みぎへまがる}
+{turn left} {左へ曲がる} {ひだりへまがる}
+{hold} {持つ} {もつ}
+{take, pass} {取る} {とる}
+{help (with a task)} {手伝う} {てつだう}
+{call} {呼ぶ} {よぶ}
+{speak, talk} {話す} {はなす}
+{rain} {降る} {ふる}
  
 }; # end set lGodan
 
@@ -108,7 +128,8 @@ set lSuru {
   {play tennis}                  {テニス} {テニス}
   {play soccer}                  {サッカー} {サッカー}
   {do cherry blossom viewing}  {お花見} {おはなみ}
- 
+  {copy} {コピー} {コピー}
+
 }; # end suru verbs
 
 
@@ -358,7 +379,7 @@ proc vCommand {v} {
 }
 
 proc vCommandPol {v} {
-   return "[baseTe $v]下さい"
+   return [list "[baseTe $v]下さい" "[baseTe $v]ください"]
 }
 
 # iru - to exist (animate)
@@ -585,7 +606,6 @@ proc buildIchidanConj {} {
     
     set ::aLessons("ichidanConjugation") $lIchidanLessons
 }
-
 
 # ==================
 # Verb vocab lessons
@@ -983,9 +1003,7 @@ proc selectIru {meta tense} {
 
 }
 
-
 };
-
 
 importBuilders {
 

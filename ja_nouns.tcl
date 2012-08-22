@@ -171,7 +171,7 @@ set lNounThings {
   {milk}            {牛乳} {ぎゅうにゅう}
   {milk (katakana)} {ミルク} {ミルク}
   {juice}           {ジュース} {ジュース}
-  {beer}            {ビル} {ビル}
+  {beer}            {ビール} {ビール}
   {alcohol}         {お酒} {おさけ}
   {sake}            {お酒} {おさけ}
   
@@ -204,6 +204,14 @@ set lNounThings {
   {vehicle}      {車} {くるま}
   {car}          {車} {くるま}
   {place}        {所} {ところ}
+
+  {air conditioner} {エアコン} {エアコン}
+  {passport} {パスポート} {パスポート}
+  {name} {名前} {なまえ}
+  {map} {地図} {ちず}
+
+  {salt} {塩} {しお}
+  {sugar} {砂糖} {さとう}
 
 }; # end set lNounThings
 
@@ -325,7 +333,7 @@ variable lInanimateObjects {
   {milk}            {牛乳} {ぎゅうにゅう}
   {milk (katakana)} {ミルク} {ミルク}
   {juice}           {ジュース} {ジュース}
-  {beer}            {ビル} {ビル}
+  {beer}            {ビール} {ビール}
   {alcohol}         {お酒} {おさけ}
   {sake}            {お酒} {おさけ}
   
@@ -358,6 +366,15 @@ variable lInanimateObjects {
   {vehicle}      {車} {くるま}
   {car}          {車} {くるま}
   {place}        {所} {ところ}
+
+  {air conditioner} {エアコン} {エアコン}
+  {passport} {パスポート} {パスポート}
+  {name} {名前} {なまえ}
+  {map} {地図} {ちず}
+
+  {salt} {塩} {しお}
+  {sugar} {砂糖} {さとう}
+
 
 }; # end set lInanimateObjects
 

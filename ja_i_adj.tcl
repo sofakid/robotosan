@@ -1,9 +1,14 @@
-# -------------
+
 # い-Adjectives
 # -------------
 #
 # TODO: think about splitting this into い and な adjective 
 # namespaces, they are so different.
+#
+# atsui: {暑} {熱}
+#
+#
+
  
 namespace eval iAdj {
 
@@ -21,7 +26,7 @@ variable lIAdj {
   
   {good}                            {い} {よ} {}
   {bad}                             {悪} {わる} {}
-  {hot}                             {{暑} {熱}} {あつ} {weather touch}
+  {hot}                             {暑} {あつ} {weather touch}
   {cold}                            {寒} {さむ} {weather}
   {cold}                            {冷た} {つめた} {touch}
   {difficult}                       {難し} {むずかし} {}
@@ -68,12 +73,27 @@ variable lIAdj {
 
 proc conjI {meta} {
 
-   set head [return 0 <= [lsearch $meta "neg"] ? "くな" : ""]
-   
-   set tail [eval 0 <= [lindex $meta "past"] ? "かった" : "い"]
-   
-   return "$head$tail"
-   
+  #puts "meta: $meta [lsearch $meta "neg"] [lsearch $meta "past"]"
+
+# can't get this to go
+#  set head [expr 0 <= [lsearch $meta "neg"] ? "くな" : ""]
+#  set tail [expr 0 <= [lsearch $meta "past"] ? "かった" : "い"]
+
+  if {0 <= [lsearch $meta "neg"]} {
+    set head "くな"
+  } else {
+    set head ""
+  }
+
+  if {0 <= [lsearch $meta "past"]} {
+    set tail "かった"
+  } else {
+    set tail "い"
+  }
+
+
+  return "$head$tail"
+
 }
 
 # v is a base of an い-adj in a list {eng kanji kana meta}
@@ -93,6 +113,8 @@ proc transConjI {v conj} {
 
 # In adjectives, v is not a list of bases like in verbs. 
 # v is a quadruple {eng kanj kana meta}
+
+#i don't use these yet, unfinsihed
 proc vNegPres {v} {
    return [vNeg $v]
 }
@@ -150,6 +172,40 @@ proc selectIAdj {meta} {
 # Lesson Builders
 # ---------------
 
+proc buildIAdjConj {} {
+
+   global aLessons
+   
+   set lLesson {}
+   
+   foreach {english kanji kana tags} $::iAdj::lIAdj {
+      
+      foreach {is meta} {
+
+          is {}
+          isn't neg
+          was past
+          wasn't {neg past}
+
+        } {
+
+        set i [conjI $meta]
+
+        set eng "$is $english"
+        if {[llength $tags]} {
+           set eng "$eng ($tags)"
+        }
+
+        puts "$eng - $kanji$i - $kana$i"
+        
+        lappend lLesson $eng $kanji$i $kana$i
+      }   
+   }
+   
+   set aLessons("iAdjConj") $lLesson
+  
+}
+
 proc buildIAdjVocab {} {
   
    global aLessons
@@ -158,7 +214,7 @@ proc buildIAdjVocab {} {
    
    set i "い"
    
-   foreach {english kanji kana tags} $::adj::lIAdj {
+   foreach {english kanji kana tags} $::iAdj::lIAdj {
    
         # wtf?
         #set eng [expr (0 < [llength $tags]) ? {$english} : "$english ($tags)"]
@@ -179,4 +235,4 @@ proc buildIAdjVocab {} {
 }; # end namespace
 # TODO build adjective+noun lessons
 
-#lappend lessonBuilders ::adj::buildIAdjVocab ::adj::buildNaAdjVocab ::adj::buildAllAdjVocab
+lappend lessonBuilders ::iAdj::buildIAdjVocab ::iAdj::buildIAdjConj
