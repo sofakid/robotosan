@@ -28,22 +28,27 @@ namespace eval ui {
 
 
   proc colour {c s} {
-     puts -nonewline "$c$s$::ui::eReset"
+    if {"" == $s} {
+      set reset ""
+    } else {
+      set reset $::ui::eReset
+    }
+    puts -nonewline "$c$s$reset"
   }
 
-  proc blue {s} {
+  proc blue {{s ""}} {
      colour $::ui::eBlue $s
   }
 
-  proc lightBlue {s} {
+  proc lightBlue {{s ""}} {
      colour $::ui::eLightBlue $s
   }
 
-  proc pink {s} {
+  proc pink {{s ""}} {
      colour $::ui::ePink $s
   }
 
-  proc yellow {s} {
+  proc yellow {{s ""}} {
      colour $::ui::eYellow $s
   }
 
