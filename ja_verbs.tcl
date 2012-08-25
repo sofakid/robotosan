@@ -183,6 +183,16 @@ proc conjugateDesu {b} {
    return [list $a $i $u $e $o $ta $te]
 }
 
+proc conjugateAru {b} {
+
+   # todo these aren't all right
+   foreach [list a i u e o ta te] {
+        {} {あり} {ある} {あれ} {あろう} {あった} {あって}
+   } {};
+
+   return [list $a $i $u $e $o $ta $te]
+}
+
 proc conjugateMasu {} {
 
 }
@@ -953,7 +963,7 @@ proc selectAru {meta tense} {
     set kanji "ある"
     set kana  "ある"
     
-    set conj conjugateGodan
+    set conj conjugateAru
    
     aEn "past"    "was"
     aEn "pres"    "is"
