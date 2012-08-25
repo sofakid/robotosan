@@ -373,7 +373,7 @@ proc buildSentence {protos} {
 }
 
 proc buildPatterns {lessonName protos} {
-   puts "patterns"
+   ::ui::yellow "patterns\n"
 
    #for {set i 0} {$i < 10} {incr i} {
    #   set l [buildSentence $protos]
@@ -385,9 +385,13 @@ proc buildPatterns {lessonName protos} {
       
          set result [oneLine $sJa $sEn $lMeta]
          
-         puts "Prototype: $sJa"
+         ::ui::yellow "Prototype: "
+         ::ui::blue "$sJa\n"
+
          foreach {en kanji kana} $result {
-             puts "$en - $kanji"   
+             ::ui::blue $en
+             puts -nonewline " - " 
+             ::ui::pink "$kanji\n"   
          }
          
          foreach el $result {

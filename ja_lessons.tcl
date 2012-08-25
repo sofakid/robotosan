@@ -17,6 +17,8 @@ proc importBuilders {lBuilders} {
 
 foreach sFile {
 
+  ja_ui.tcl
+
   ja_vocab.tcl
   ja_verbs.tcl
   ja_nouns.tcl
