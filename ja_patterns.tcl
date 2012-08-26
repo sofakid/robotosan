@@ -390,8 +390,8 @@ proc buildPatterns {lessonName protos} {
 
          foreach {en kanji kana} $result {
              ::ui::lightBlue $en
-             puts -nonewline " - " 
-             ::ui::pink "$kanji\n"   
+             ::ui::lightGray " - " 
+             ::ui::lightPurple "$kanji\n"   
          }
          
          foreach el $result {
@@ -401,6 +401,8 @@ proc buildPatterns {lessonName protos} {
       }
       
    }
+
+   ::ui::reset
    
    set ::aLessons($lessonName) $lessons
 }
