@@ -288,7 +288,7 @@ set lVocabLessons {
   {milk}            {牛乳} {ぎゅうにゅう}
   {milk (katakana)} {ミルク} {ミルク}
   {juice}           {ジュース} {ジュース}
-  {beer}            {ビル} {ビル}
+  {beer}            {ビール} {ビール}
   {alcohol, sake}   {お酒} {おさけ}
   
   {video tape, video deck}      {ビデオ} {ビデオ}

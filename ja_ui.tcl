@@ -11,6 +11,55 @@ namespace eval ui {
 # Brown       0;33     Yellow        1;33
 # Light Gray  0;37     White         1;37
 
+  variable colours
+
+  proc ansi {code} {
+    set m m
+    return "\033\\\[$code$m"
+  }
+
+  foreach {name code} {
+
+    black       0;30     darkGray     1;30
+    blue        0;34     lightBlue    1;34
+    green       0;32     lightGreen   1;32
+    cyan        0;36     lightCyan    1;36
+    red         0;31     lightRed     1;31
+    purple      0;35     lightPurple  1;35
+    brown       0;33     yellow       1;33
+    lightGray   0;37     white        1;37
+
+    invert      7        
+    reset       0
+
+  } {
+    set m m
+    set colours($name) [ansi $code]
+  
+    set body "::ui::colour \"$code\" \$s"
+
+    puts $body
+
+    eval proc $name {{{s {}}}} {$body}
+      
+  }
+
+  proc colour {c s} {
+    if {"" == $s} {
+      set reset ""
+    } else {
+      set reset "\033\[0m"
+    }
+    set m m
+    puts -nonewline "\033\[$c$m$s$reset"
+  }
+
+  lightGreen
+  puts [info proc]
+  white "yyayay"
+
+  puts "fucks0rz"
+
  variable eBlue "\033\[0;34m"
  variable ePink "\033\[1;35m"
  variable eWhite "\033\[1;37m"
@@ -27,14 +76,7 @@ namespace eval ui {
  variable eReset "\033\[0m"
 
 
-  proc colour {c s} {
-    if {"" == $s} {
-      set reset ""
-    } else {
-      set reset $::ui::eReset
-    }
-    puts -nonewline "$c$s$reset"
-  }
+  
 
   proc blue {{s ""}} {
      colour $::ui::eBlue $s
