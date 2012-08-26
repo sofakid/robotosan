@@ -208,17 +208,17 @@ proc catalog {} {
 	set lLessons [lsort [array names aLessons]]
 	
 	while {$choice == 0} {
-		::ui::lightPurple "Please choose a lesson:"
-		set i 1;
+		::ui::lightPurple "\n\n\nPlease choose a lesson:\n"
+		set i 1
 		foreach sLesson $lLessons {
 			
 			::ui::lightGreen "  $i\t"
-			::ui::lightBlue "$sLesson"
+			::ui::lightBlue "$sLesson\n"
 			
 			incr i
 		}
 		
-		::ui::lightGreen
+		::ui::lightGreen "\n"
 		
 		gets stdin sChoice
 		
