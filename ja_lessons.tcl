@@ -33,7 +33,7 @@ foreach sFile {
   
 } { utfSource $sFile }
 
-puts "Building lessons..."
+::ui::yellow "Building lessons..."
 set i 0
 foreach builder $lessonBuilders {
 
@@ -53,9 +53,9 @@ foreach builder $lessonBuilders {
 
    eval $builder
    
-   puts "... done."
+   ::ui::lightGreen "... done."
 }
-puts "Lessons built."
+::ui::lightBlue "Lessons built."
 
 # ---------
 # Test shit
