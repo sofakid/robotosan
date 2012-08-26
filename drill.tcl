@@ -41,7 +41,16 @@ proc go {sLesson} {
 	foreach "sNative sKanji sKana" $aLessons($sLesson) {
 	
 		if {[info exists aKana($sNative)]} {
-		   puts "\nWARNING - duplicate aKana($sNative) : overwriting $aKana($sNative) with $sKana"
+		   ::ui::white "\n\["
+		   ::ui::lightRed "WARNING"
+		   ::ui::white "\]"
+		   ::ui::darkGray " - "
+		   ::ui::lightGray " duplicate "
+		   ::ui::white "aKana($sNative)"
+		   ::ui::lightGrey " : overwriting "
+		   ::ui::lightRed "$aKana($sNative)"
+		   ::ui::lightGray " with "
+		   ::ui::lightGreen "$sKana"
 	    }
 	    
 		set aWords($sNative) $sKanji;
@@ -101,8 +110,8 @@ proc go {sLesson} {
 		}		
 	}
 	
-	puts "Done in [checkTimer]."
-	
+	::ui::lightGreen "Done in [checkTimer]."
+	::ui::reset
 }
 
 # TODO - make this stuff work

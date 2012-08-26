@@ -190,6 +190,7 @@ proc conjugateAru {b} {
         {} {あり} {ある} {あれ} {あろう} {あった} {あって}
    } {};
 
+
    return [list $a $i $u $e $o $ta $te]
 }
 
@@ -629,8 +630,8 @@ proc buildVerbsVocab {} {
 	    lappend lWords $sNative
 	    
 		if {[info exists sKana($sNative)]} {
-		   puts "\nWARNING - duplicate sKana($sNative) : overwriting $aKana($sNative)"
-	    }
+		  ::ui::overwriting sKana($sNative) $aKana($sNative) $sKana
+    }
 	    
 		set aKanji($sNative) $sKanji;
 		set aKana($sNative) $sKana;
@@ -641,8 +642,8 @@ proc buildVerbsVocab {} {
 	    lappend lWords $sNative
 	    
 		if {[info exists sKana($sNative)]} {
-		   puts "\nWARNING - duplicate sKana($sNative) : overwriting $aKana($sNative)"
-	    }
+		  ::ui::overwriting sKana($sNative) $aKana($sNative) $sKana
+    }
 	    
 		set aKanji($sNative) $sKanji;
 		set aKana($sNative) $sKana;
@@ -654,8 +655,8 @@ proc buildVerbsVocab {} {
 	    lappend lWords $sNative
 	    
 		if {[info exists sKana($sNative)]} {
-		   puts "\nWARNING - duplicate sKana($sNative) : overwriting $aKana($sNative)"
-	    }
+		  ::ui::overwriting sKana($sNative) $aKana($sNative) $sKana
+    }
 	    
 		set aKanji($sNative) $sKanji$sSuru;
 		set aKana($sNative) $sKana$sSuru;
@@ -676,8 +677,8 @@ proc buildIchidanVocab {} {
 	    lappend lWords $sNative
 	    
 		if {[info exists sKana($sNative)]} {
-		   puts "\nWARNING - duplicate sKana($sNative) : overwriting $aKana($sNative)"
-	    }
+		  ::ui::overwriting sKana($sNative) $aKana($sNative) $sKana
+    }
 	    
 		set aKanji($sNative) $sKanji;
 		set aKana($sNative) $sKana;
@@ -698,8 +699,8 @@ proc buildGodanVocab {} {
 	    lappend lWords $sNative
 	    
 		if {[info exists sKana($sNative)]} {
-		   puts "\nWARNING - duplicate sKana($sNative) : overwriting $aKana($sNative)"
-	    }
+		  ::ui::overwriting sKana($sNative) $aKana($sNative) $sKana
+    }
 	    
 		set aKanji($sNative) $sKanji;
 		set aKana($sNative) $sKana;
@@ -722,8 +723,8 @@ proc buildSuruVocab {} {
 	    lappend lWords $sNative
 	    
 		if {[info exists sKana($sNative)]} {
-		   puts "\nWARNING - duplicate sKana($sNative) : overwriting $aKana($sNative)"
-	    }
+		  ::ui::overwriting sKana($sNative) $aKana($sNative) $sKana
+    }
 	    
 		set aKanji($sNative) $sKanji$sSuru;
 		set aKana($sNative) $sKana$sSuru;

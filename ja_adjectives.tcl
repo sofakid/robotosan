@@ -109,8 +109,8 @@ proc buildAllAdjVocab {} {
 	    lappend lWords $sNative
 	    
 		if {[info exists aKana($sNative)]} {
-		   puts "\nWARNING - duplicate aKana($sNative) : overwriting $aKana($sNative) with $sKana"
-	    }
+      ::ui::overwriting aKana($sNative) $aKana($sNative) $sKana  
+    }
 	    
 		set aKanji($sNative) $sKanji$i;
 		set aKana($sNative) $sKana$i;
@@ -121,8 +121,8 @@ proc buildAllAdjVocab {} {
 	    lappend lWords $sNative
 	    
 		if {[info exists aKana($sNative)]} {
-		   puts "\nWARNING - duplicate aKana($sNative) : overwriting $aKana($sNative) with $sKana$na"
-	    }
+      ::ui::overwriting aKana($sNative) $aKana($sNative) $sKana$na  
+    }
 	    
 		set aKanji($sNative) $sKanji$na;
 		set aKana($sNative) $sKana$na;

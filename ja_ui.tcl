@@ -42,6 +42,28 @@ namespace eval ui {
     return "\033\[$code$m"
   }
 
+
+  # --------
+  # Std msgs
+  # --------
+
+  proc warning {reason action} {
+    ::ui::white "\n\["
+    ::ui::lightRed "WARNING"
+    ::ui::white "\]"
+    ::ui::darkGray " - "
+    ::ui::lightGray "$reason"
+    ::ui::darkGray " : "
+    ::ui::lightGray "$action"
+    ::ui::reset
+  }
+
+  proc overwriting {native victim perp} {
+
+     ::ui::warning "duplicate [::ui::whiteCode]$native" "overwriting [::ui::lightRedCode]$victim[::ui::lightGrayCode] with [::ui::greenCode]$perp"
+
+  }
+
 }
 
 

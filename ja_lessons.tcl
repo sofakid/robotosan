@@ -34,7 +34,20 @@ foreach sFile {
 } { utfSource $sFile }
 
 puts "Building lessons..."
+set i 0
 foreach builder $lessonBuilders {
+
+   switch $i {
+
+    0 ::ui::lightGreen
+    1 ::ui::lightBlue
+    2 ::ui::lightCyan
+    3 ::ui::lightRed
+    4 ::ui::lightPurple
+
+   }
+
+   set i [expr ($i + 1) % 5]
 
    puts -nonewline "  - $builder ..."
 

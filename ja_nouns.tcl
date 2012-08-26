@@ -420,8 +420,8 @@ proc buildNounVocab {} {
 	    lappend lWords $sNative
 	    
 		if {[info exists sKana($sNative)]} {
-		   puts "\nWARNING - duplicate sKana($sNative) : overwriting $aKana($sNative)"
-	    }
+      ::ui::overwriting sKana($sNative) $aKana($sNative) $sKana
+		}
 	    
 		set aKanji($sNative) $sKanji;
 		set aKana($sNative) $sKana;
@@ -429,11 +429,11 @@ proc buildNounVocab {} {
 	
 	foreach "sNative sKanji sKana" $::nouns::lNounPlaces {
 	
-	    lappend lWords $sNative
+	  lappend lWords $sNative
 	    
 		if {[info exists sKana($sNative)]} {
-		   puts "\nWARNING - duplicate sKana($sNative) : overwriting $aKana($sNative)"
-	    }
+		  ::ui::overwriting sKana($sNative) $aKana($sNative) $sKana
+    }
 	    
 		set aKanji($sNative) $sKanji;
 		set aKana($sNative) $sKana;
