@@ -55,7 +55,7 @@ namespace eval ui {
     ::ui::lightGray "$reason"
     ::ui::darkGray " : "
     ::ui::lightGray "$action"
-    ::ui::reset
+    ::ui::reset "\n"
   }
 
   proc overwriting {native victim perp} {
@@ -64,7 +64,73 @@ namespace eval ui {
 
   }
 
+  proc prototype {s} {
+
+     set out [::ui::whiteCode]
+     
+     while {-1 < [set i [string first < $s]]} {
+
+        set j [string first > $s]
+
+        if {0 != $i} {
+          set out "$out[string range $s 0 [expr $i -1]]"
+        }
+        
+
+        set token [string range $s [expr $i + 1] [expr $j -1 ]]
+
+        set out "$out[::ui::darkGrayCode]<[::ui::brownCode]$token[::ui::darkGrayCode]>[::ui::whiteCode]"
+
+        set s [string range $s [expr $j+1] end]
+        
+
+     }
+
+     set out "$out$s"
+
+     puts -nonewline $out
+
+  }
+
+  proc english {s {light ::ui::lightBlueCode} {dark ::ui::darkGrayCode}} {
+
+     # fucking tcl bullshit
+     if {0 == [string first : $light]} {
+        set light [$light]
+        set dark [$dark]
+     }
+
+     set out $light
+     
+     while {-1 < [set i [string first ( $s]]} {
+
+        set j [string first ) $s]
+
+        if {0 != $i} {
+          set out "$out[string range $s 0 [expr $i -1]]"
+        }
+        
+
+        set token [string range $s $i $j]
+
+        set out "$out$dark$token$light"
+
+        set s [string range $s [expr $j+1] end]
+        
+
+     }
+
+     set out "$out$s"
+
+     puts -nonewline $out
+
+  }
+
 }
+
+#set s "<n1>と<n2>の<between>に<n-inanimate>が<aru>"
+#puts $s
+#::ui::prototype $s
 
 
 #puts "Testing [::ui::lightCyanCode]M[::ui::yellowCode]O[::ui::lightPurpleCode]T[::ui::lightGreenCode]H[::ui::lightRedCode]A"

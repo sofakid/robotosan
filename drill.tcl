@@ -41,16 +41,7 @@ proc go {sLesson} {
 	foreach "sNative sKanji sKana" $aLessons($sLesson) {
 	
 		if {[info exists aKana($sNative)]} {
-		   ::ui::white "\n\["
-		   ::ui::lightRed "WARNING"
-		   ::ui::white "\]"
-		   ::ui::darkGray " - "
-		   ::ui::lightGray " duplicate "
-		   ::ui::white "aKana($sNative)"
-		   ::ui::lightGrey " : overwriting "
-		   ::ui::lightRed "$aKana($sNative)"
-		   ::ui::lightGray " with "
-		   ::ui::lightGreen "$sKana"
+			::ui::overwriting aKana($sNative) $aKana($sNative) $sKana
 	    }
 	    
 		set aWords($sNative) $sKanji;
@@ -69,7 +60,10 @@ proc go {sLesson} {
 		
 		set iExtraReps 0
 		
-		puts "Round $i of $n" 
+		::ui::white "Round "
+		::ui::lightBlue "$i"
+		::ui::white " of " 
+		::ui::lightBlue "$n" 
 		
 		set lAsk ""
 		
@@ -110,8 +104,10 @@ proc go {sLesson} {
 		}		
 	}
 	
-	::ui::lightGreen "Done in [checkTimer]."
-	::ui::reset
+	::ui::lightGreen "Done in "
+	::ui::white [checkTimer] 
+	::ui::lightGreen "."
+	::ui::reset "\n"
 }
 
 # TODO - make this stuff work
@@ -139,8 +135,9 @@ proc spreadNeighboringDups {sLastWord lTarget} {
 }
 
 proc ask {sQuestion lAnswers lKana} {
-	puts "\n$sQuestion"
+	::ui::english "\n$sQuestion" ::ui::purpleCode ::ui::darkGrayCode
 	
+	::ui::lightGray "\n"
 	gets stdin sResponse
 	
 	set bCorrect 0;
@@ -157,7 +154,11 @@ proc ask {sQuestion lAnswers lKana} {
 	
 	
 	if {!$bCorrect} {
-		puts "NO: $lAnswers ( $lKana )"
+		::ui::lightRed "NO: "
+		::ui::white $lAnswers
+		::ui::lightRed " ( "
+	    ::ui::white $lKana
+	    ::ui::lightRed " )\n"
 	}
 	
 	return $bCorrect

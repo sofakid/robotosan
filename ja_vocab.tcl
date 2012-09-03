@@ -193,7 +193,6 @@ set lVocabLessons {
    {well, let me see} {えーと} {えーと}
    {please (for a favour)} {お願いします} {おねがいします}
    {certainly (sir/madame)} {かしこまりました} {かしこまりました}
-   {the number being inquired about} {お問い合わせの番号} {おといあわせのばんごう}
    {New York} {ニューヨーク} {ニューヨーク}
    {Beijing} {北京} {ペキン}
    {London} {ロンドン} {ロンドン}
@@ -269,10 +268,10 @@ set lVocabLessons {
   
   {meet a friend} {友達に会う} {ともだちにあう}
   
-  {a meal, cooked rice} {ごはん} {ごはん}
-  {breakfast}           {朝ごはん} {あさごはん}
-  {lunch}               {昼ごはん} {ひるごはん}
-  {supper}              {晩ごはん} {ばんごはん}
+  {a meal, cooked rice} {ご飯} {ごはん}
+  {breakfast}           {朝ご飯} {あさごはん}
+  {lunch}               {昼ご飯} {ひるごはん}
+  {supper}              {晩ご飯} {ばんごはん}
   
   {bread}       {パン} {パン}
   {egg}         {卵} {たまご}
@@ -621,7 +620,8 @@ set lVocabLessons {
   {Do come in.} {} {}
   {Thank you / May I? (i'm afraid i may be disturbing you)} {} {}
   {Won't you have - ? / } {} {}
-  {} {} {}
+  {the number being inquired about} {お問い合わせの番号} {おといあわせのばんごう}
+  {}} {} {}
   {} {} {}
   {} {} {}
   {} {} {}

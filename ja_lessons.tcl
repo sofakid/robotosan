@@ -53,9 +53,9 @@ foreach builder $lessonBuilders {
 
    eval $builder
    
-   ::ui::lightGreen "... done."
+   ::ui::lightGreen "... done.\n"
 }
-::ui::lightBlue "Lessons built."
+::ui::yellow "Lessons built.\n"
 
 # ---------
 # Test shit

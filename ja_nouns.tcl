@@ -152,9 +152,9 @@ set lNounThings {
  
   {meal}                {ご飯} {ごはん}
   {cooked rice}         {ご飯} {ごはん}
-  {breakfast}           {朝ごはん} {あさごはん}
-  {lunch}               {昼ごはん} {ひるごはん}
-  {supper}              {晩ごはん} {ばんごはん}
+  {breakfast}           {朝ご飯} {あさごはん}
+  {lunch}               {昼ご飯} {ひるごはん}
+  {supper}              {晩ご飯} {ばんごはん}
   
   {bread}       {パン} {パン}
   {egg}         {卵} {たまご}
@@ -315,9 +315,9 @@ variable lInanimateObjects {
   
   {meal}                {ご飯} {ごはん}
   {cooked rice}         {ご飯} {ごはん}
-  {breakfast}           {朝ごはん} {あさごはん}
-  {lunch}               {昼ごはん} {ひるごはん}
-  {supper}              {晩ごはん} {ばんごはん}
+  {breakfast}           {朝ご飯} {あさごはん}
+  {lunch}               {昼ご飯} {ひるごはん}
+  {supper}              {晩ご飯} {ばんごはん}
   
   {bread}       {パン} {パン}
   {egg}         {卵} {たまご}

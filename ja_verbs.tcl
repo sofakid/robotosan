@@ -821,7 +821,7 @@ proc defineSelectorsWithMutators {muts} {
 
    foreach mut $muts {
        set s "return \[selectWithMutator $mut \$meta\]"
-       puts "#####\n############# $s"
+       #puts "#####\n############# $s"
        eval proc select_$mut {meta} {$s}
    }
    

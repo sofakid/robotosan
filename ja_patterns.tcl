@@ -385,13 +385,13 @@ proc buildPatterns {lessonName protos} {
       
          set result [oneLine $sJa $sEn $lMeta]
          
-         ::ui::yellow "Prototype: "
-         ::ui::lightBlue "$sJa\n"
+         ::ui::yellow "\nPrototype: "
+         ::ui::prototype "$sJa\n"
 
          foreach {en kanji kana} $result {
-             ::ui::lightBlue $en
+             ::ui::english $en
              ::ui::lightGray " - " 
-             ::ui::lightPurple "$kanji\n"   
+             ::ui::purple "$kanji\n"   
          }
          
          foreach el $result {
