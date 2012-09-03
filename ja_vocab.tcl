@@ -621,7 +621,7 @@ set lVocabLessons {
   {Thank you / May I? (i'm afraid i may be disturbing you)} {} {}
   {Won't you have - ? / } {} {}
   {the number being inquired about} {お問い合わせの番号} {おといあわせのばんごう}
-  {}} {} {}
+  {} {} {}
   {} {} {}
   {} {} {}
   {} {} {}
