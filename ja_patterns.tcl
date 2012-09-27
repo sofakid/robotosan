@@ -35,6 +35,7 @@ variable tags {
   <v-neg-pol>   ::verbs::select_vNegPol
   <v-past-pol>  ::verbs::select_vPastPol
   <v-pres-pol>  ::verbs::select_vPresPol
+  <v-te>        ::verbs::selectBaseTe
   
   
   <trans>      ::nouns::randomModeOfTransportation
@@ -151,6 +152,22 @@ variable lesson10 {
   {<n1>と<n2>の<between>に<n-animate>が<iru>} 
         {There <iru> a <n-animate> <between> (the) <n1> and (the) <n2>} 
         { { tense { most } { <iru> } } }
+
+}
+
+variable lesson15 {
+
+  {<v-te>もいいです} 
+        {You may <v-te>} 
+        {}
+
+  {<v-te>もいいですか} 
+        {May I <v-te>?} 
+        {}
+        
+  {<v-te>もいけません} 
+        {You must not <v-te>} 
+        {}
 
 }
 
@@ -413,6 +430,7 @@ proc buildLessons {} {
 
     buildPatterns "lesson6" $::patt::lesson6
     buildPatterns "lesson10" $::patt::lesson10
+    buildPatterns "lesson15" $::patt::lesson15
     
 
 }

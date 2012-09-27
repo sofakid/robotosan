@@ -879,7 +879,6 @@ defineSelectorsWithMutators {
  vPast
  vIfAndWhen
  vDoSuchAs
-
 }
 
 proc selectBaseA {meta} {
