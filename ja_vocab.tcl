@@ -916,6 +916,52 @@ set lVocabLessons {
 
 }
 
+"v16" {
+  {ride, get on [a train]} {乗る} {のる}
+  {get off [a train]} {降りる} {おりる}
+  {change [trains]} {乗り換える} {のりかえる}
+  {take [a shower]} {浴びる} {あびる}
+  {put in, insert} {入れる} {いれる}
+  {take out, withdraw} {出す} {だす}
+  {enter [university]} {入る} {はいる}
+  {graduate from} {出る} {でる}
+  {quit, retire, stop, give up} {やめる} {やめる}
+  {push, press, type} {押す} {おす}
+  
+  {young} {若い} {わかい}
+  {long} {長い} {ながい}
+  {short} {短い} {みじかい}
+  {bright, light} {明るい} {あかるい}
+  {dark} {暗い} {くらい}
+  {tall (person)} {背が高い} {せがいたかい}
+  {clever, smart} {頭がいい} {あたまがいい}
+  
+  {body} {体} {からだ}
+  {head} {頭} {あたま}
+  {hair} {紙} {かみ}
+  {face} {顔} {かお}
+  {eye} {目} {め}
+  {ear} {耳} {みみ}
+  {mouth} {口} {くち}
+  {tooth} {歯} {は}
+  {stomache} {おなか} {おなか}
+  {leg, foot} {足} {あし}
+  
+  {service} {サービス} {サービス}
+  {jogging} {ジョギング} {ジョギング}
+  {to jog} {ジョギングをします} {ジョギングをする}
+  {shower} {シャワー} {シャワー}
+  
+  {green, greenery} {緑} {みどり}
+  {buddhist temple} {お寺} {おてら}
+  {shinto shrine} {神社} {じんじゃ}
+  {foreign student} {留学生} {りゅうがくせい}
+  {in what way, how} {どうやって} {どうやって}
+  {which (for three or more)} {どの} {どの}
+  {No, I still have a long way to go} {いいえまだまだです} {いいえまだまだです}
+
+  }
+
 }; # end set lLessons
 #
 # TODO 

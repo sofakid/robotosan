@@ -81,6 +81,14 @@ variable lesson6 {
 
 }
 
+variable lesson13 {
+
+  {<n-inanimate>がほしいです} {I want (a) <n-inanimate>} {} 
+
+  {<n-inanimate>がほしいです} {I want (a) <n-inanimate>} {} 
+
+}
+
 variable lesson10 {
 
   {<n-inanimate>が<aru>} 
@@ -165,9 +173,40 @@ variable lesson15 {
         {May I <v-te>?} 
         {}
         
-  {<v-te>もいけません} 
+  {<v-te>はいけません} 
         {You must not <v-te>} 
         {}
+
+
+
+}
+
+variable shuka1 {
+
+  {}
+  {}
+  {}
+  
+
+  {}
+  {}
+  {}
+  
+
+  {}
+  {}
+  {}
+  
+
+  {}
+  {}
+  {}
+  
+
+  {}
+  {}
+  {}
+  
 
 }
 
