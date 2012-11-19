@@ -924,7 +924,7 @@ set lVocabLessons {
   {put in, insert} {入れる} {いれる}
   {take out, withdraw} {出す} {だす}
   {enter [university]} {入る} {はいる}
-  {graduate from} {出る} {でる}
+  {graduate from} {卒業する} {そつぎょうする}
   {quit, retire, stop, give up} {やめる} {やめる}
   {push, press, type} {押す} {おす}
   
