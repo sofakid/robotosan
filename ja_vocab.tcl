@@ -938,7 +938,7 @@ set lVocabLessons {
   
   {body} {体} {からだ}
   {head} {頭} {あたま}
-  {hair} {紙} {かみ}
+  {hair} {} {かみ}
   {face} {顔} {かお}
   {eye} {目} {め}
   {ear} {耳} {みみ}
@@ -959,6 +959,47 @@ set lVocabLessons {
   {in what way, how} {どうやって} {どうやって}
   {which (for three or more)} {どの} {どの}
   {No, I still have a long way to go} {いいえまだまだです} {いいえまだまだです}
+
+  }
+
+  "v17" {
+    
+    {memorize} {覚える} {おぼえる}
+    {forget} {忘れる} {わすれる}
+    {lose} {無くす} {なくす}
+    {hand in a report} {レポートを出す} {レポートをだす}
+    {pay} {払う} {はらう}
+    {give back, return} {返す} {かえす}
+    {go out} {出かける} {でかける}
+    {take off (shoes, clothes)} {脱ぐ} {ぬぐ}
+    {take (something)} {持って行く} {もっていく}
+    {bring (something)} {持って来る} {もってくる}
+    {worry} {心配する} {しんぱいする}
+    {work overtime} {残業する} {ざんぎょうする}
+    {go on a business trip} {出張する} {しゅっちょうする}
+    {quaff medicine} {薬を飲む} {くすりをのむ}
+    {take a bath} {お風呂に入る} {おふろにはいる}
+    
+    {important, precious} {大切な} {たいせつな}
+    {all right} {大丈夫な} {だいじょうぶな}
+    {dangerous} {危ない} {あぶない}
+    {question, problem, trouble} {問題} {もんだい}
+    {answer} {答え} {こたえ}
+    {no smoking} {禁煙} {きんえん}
+    {(health) insurance card} {健康保険証} {けんこうほけんしょう}
+    
+    {cold, flu} {風邪} {かぜ}
+    {fever} {熱} {ねつ}
+    {illness, disease} {病気} {びょうき}
+    {medicine} {薬} {くすり}
+    
+    {bath} {お風呂} {おふろ}
+    {jacket, outerwear} {上着} {うわぎ}
+    {underwear} {下着} {したぎ}
+    
+    {doctor (when addressing MD)} {先生} {せんせい}
+    
+    {therefore} {ですから} {ですから}
 
   }
 
