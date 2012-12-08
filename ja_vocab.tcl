@@ -938,7 +938,7 @@ set lVocabLessons {
   
   {body} {体} {からだ}
   {head} {頭} {あたま}
-  {hair} {} {かみ}
+  {hair} {髪} {かみ}
   {face} {顔} {かお}
   {eye} {目} {め}
   {ear} {耳} {みみ}
